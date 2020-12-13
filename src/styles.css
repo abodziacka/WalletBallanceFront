@@ -1,1 +1,99 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+        margin:0;
+        padding: 0;
+        list-style: none;
+        box-sizing: border-box;
+
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
+#header{
+    min-height: 100vh;  
+    background: url('background.jpg');
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+#box{
+    position: relative;
+    top: 673px;
+    left: 1114px;
+    width: 764px;
+    height: 116px;
+    text-align: left;
+    font: normal normal normal 50px/59px Lucida Bright;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    background: none;
+    opacity: 1;
+}
+
+.button{
+    top: 819px;
+    left: 1142px;
+    width: 202px;
+    height: 62px;
+    background: #494136 0% 0% no-repeat padding-box;
+    border: 2px solid #000000;
+    border-radius: 25px;
+    filter: blur(undefined);
+    transition-duration: 0.4s;
+    cursor: pointer;
+
+    font: normal normal normal 29px/32px Lucida Bright;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 0.86;
+    text-align: center;
+    }
+
+.button:hover {
+    background-color: #ccd2d4;
+    color: rgb(34, 29, 29);
+    }
+
+
+  #h1{
+      font-family: Comic Sans MS, Comic Sans, cursive;
+      font-size: 53px;   
+      text-shadow: 5px 5px rgb(8, 8, 8);
+      text-align: center;
+      margin: 0;
+      }
+  #h2{
+    margin-top: 50px;
+    text-align: center;
+    font: normal normal normal 80px/98px Lucida Bright;
+    letter-spacing: 0px;
+    color: #3A2A2A;
+    text-shadow: 5px 3px 6px #E9E0DB;
+    opacity: 1;
+  
+  }
+
+  #h3{
+    margin-top: 100px;
+    text-align: center;
+    font: normal normal normal 60px/78px Lucida Bright;
+    letter-spacing: 0px;
+    color: #3A2A2A;
+    text-shadow: 5px 3px 6px #E9E0DB;
+    opacity: 1;
+  
+  }
+  .kolumna{
+    float: left;
+    margin: 10px;
+    width: 30%;
+    height: 790px;
+    }
+    
+    #clear{
+    clear: both;
+    }
