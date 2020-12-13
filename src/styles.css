@@ -67,7 +67,7 @@
       margin: 0;
       }
   #h2{
-    margin-top: 50px;
+    margin-top: 100px;
     text-align: center;
     font: normal normal normal 80px/98px Lucida Bright;
     letter-spacing: 0px;
@@ -78,7 +78,7 @@
   }
 
   #h3{
-    margin-top: 100px;
+    margin-top: 70px;
     text-align: center;
     font: normal normal normal 60px/78px Lucida Bright;
     letter-spacing: 0px;
@@ -91,9 +91,18 @@
     float: left;
     margin: 10px;
     width: 30%;
-    height: 790px;
+    height: 700px;
     }
     
     #clear{
     clear: both;
+    }
+
+    .navbar{
+      opacity: 0.5;
+      width: 100%;
+      position: fixed;
+    }
+    .footer{
+      text-align: center;
     }
