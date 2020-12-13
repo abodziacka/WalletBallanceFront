@@ -99,10 +99,77 @@
     }
 
     .navbar{
-      opacity: 0.5;
+      background-color: rgb(221, 220, 205);
+      opacity: 0,8;
       width: 100%;
       position: fixed;
     }
     .footer{
       text-align: center;
     }
+
+  /* REGISTRATION */
+
+  #register{
+    justify-content: center;
+  }
+
+  input.form-control,input.form-control:focus{
+    background-color: rgb(231, 222, 219);
+    color: black;
+    border-color: black;
+    border-radius:10px;
+    border-width: 2px;
+  }
+  input.form-control:focus{
+    box-shadow: none;
+    border-bottom-color: black;
+  }
+  
+  button[type=submit].btn{
+    border-radius:20px;
+    background-color: #000000;
+    color: #fff;
+  }
+  div.form-group label{
+    color:black;
+    font-weight: bold;
+  }
+  div.form-group.required>label:first-child:after{
+    content: "*";
+    color: #dc3545;
+    padding-left: 2px;
+  }
+  #toast-container>div{
+    opacity: 1;
+  }
+  form{
+    margin:0px;
+  }
+  .register{
+    justify-content: center;
+    width: 40%;
+  }
+  .row{
+    padding: 10px 20px;
+  }
+  .containerTwo{
+    background-color: darkgray;
+    padding: 15px;
+    border:2px solid black;
+    border-radius: 2em;
+    margin-top: 20%;
+  }
+  .container{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+  }
+  .form__field__error {
+    color: #b80202;
+    margin: .25rem 0;
+    font-size: 12px;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    max-height: 30%;
+    opacity: 0;
+  }
