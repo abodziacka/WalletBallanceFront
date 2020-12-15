@@ -3,6 +3,7 @@
         padding: 0;
         list-style: none;
         box-sizing: border-box;
+        
 
 }
 .container{
@@ -29,7 +30,7 @@
     text-align: left;
     font: normal normal normal 50px/59px Lucida Bright;
     letter-spacing: 0px;
-    color: #FFFFFF;
+    color: #9A9487;
     background: none;
     opacity: 1;
 }
@@ -57,12 +58,14 @@
     background-color: #ccd2d4;
     color: rgb(34, 29, 29);
     }
-
+    #h0{
+      color: white;
+    }
 
   #h1{
       font-family: Comic Sans MS, Comic Sans, cursive;
       font-size: 53px;   
-      text-shadow: 5px 5px rgb(8, 8, 8);
+      text-shadow: 10px 10px #a19692;
       text-align: center;
       margin: 0;
       }
@@ -72,7 +75,7 @@
     font: normal normal normal 80px/98px Lucida Bright;
     letter-spacing: 0px;
     color: #3A2A2A;
-    text-shadow: 5px 3px 6px #E9E0DB;
+    text-shadow: 5px 3px 6px #a19692;
     opacity: 1;
   
   }
@@ -83,7 +86,7 @@
     font: normal normal normal 60px/78px Lucida Bright;
     letter-spacing: 0px;
     color: #3A2A2A;
-    text-shadow: 5px 3px 6px #E9E0DB;
+    text-shadow: 5px 3px 6px #a19692;
     opacity: 1;
   
   }
@@ -91,7 +94,7 @@
     float: left;
     margin: 10px;
     width: 30%;
-    height: 700px;
+    height: 650px;
     }
     
     #clear{
@@ -110,20 +113,21 @@
 
   /* REGISTRATION */
 
-  #register{
-    justify-content: center;
+  .register{
+    margin: 0 auto;
+    font-family: 'Crimson Text', serif;
   }
 
   input.form-control,input.form-control:focus{
-    background-color: rgb(231, 222, 219);
+    background-color: rgb(243, 239, 237);
     color: black;
-    border-color: black;
-    border-radius:10px;
-    border-width: 2px;
+    border-radius:10px; 
+    width: 80%;
+    float: center;
+    margin: 0 auto;
   }
   input.form-control:focus{
     box-shadow: none;
-    border-bottom-color: black;
   }
   
   button[type=submit].btn{
@@ -131,6 +135,18 @@
     background-color: #000000;
     color: #fff;
   }
+  .form-group{ opacity:0;
+    -webkit-animation:fadeIn ease-in 1;
+    -moz-animation:fadeIn ease-in 1;
+    animation:fadeIn ease-in 1;
+  
+    -webkit-animation-fill-mode:forwards;
+    -moz-animation-fill-mode:forwards;
+    animation-fill-mode:forwards;
+  
+    -webkit-animation-duration:1s;
+    -moz-animation-duration:1s;
+    animation-duration:1s;}
   div.form-group label{
     color:black;
     font-weight: bold;
@@ -145,10 +161,6 @@
   }
   form{
     margin:0px;
-  }
-  .register{
-    justify-content: center;
-    width: 40%;
   }
   .row{
     padding: 10px 20px;
@@ -172,4 +184,8 @@
     transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
     max-height: 30%;
     opacity: 0;
+  }
+  .form-control:invalid ~ .form__field__error {
+    max-height: 40px;
+    opacity: 1;
   }

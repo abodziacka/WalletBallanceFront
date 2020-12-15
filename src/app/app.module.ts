@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';  
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -14,6 +15,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { UserService } from './shared/user.service';
+import { LoginComponent } from './user/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { UserService } from './shared/user.service';
     HomeComponent,
     NavMenuComponent,
     UserComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,11 @@ import { UserService } from './shared/user.service';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      progressBar:true
+    }),
+    FormsModule,
+    CommonModule
     
   ],
   providers: [UserService],

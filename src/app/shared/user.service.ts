@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +8,11 @@ import {HttpClient} from '@angular/common/http';
 export class UserService {
 
   constructor(private fb:FormBuilder, private http:HttpClient) { }
-  readonly BaseURI='http://localhost:4200';
+  readonly BaseURI='https://localhost:44333';
 
   formModel = this.fb.group({
     UserName :['', Validators.required],
     Email :['', Validators.email],
-    FullName :[''],
     Passwords : this.fb.group({
       Password :['', [Validators.required, Validators.minLength(4)]],
       ConfirmPassword :['',Validators.required]
@@ -40,9 +39,19 @@ export class UserService {
     var body = {
       UserName: this.formModel.value.UserName,
       Email: this.formModel.value.Email,
-      FullName: this.formModel.value.FullName,
       Password: this.formModel.value.Passwords.Password
     };  
+    console.log(body);
     return this.http.post(this.BaseURI + '/user/registration', body);
+  }
+
+
+  login(formData: any) {
+    return this.http.post(this.BaseURI + '/user/login', formData);
+  }
+
+  getUserProfile() {
+    const tokenHeader = new HttpHeaders({ 'Authorization': 'Bearer' + localStorage.getItem('token') });
+    return this.http.get(this.BaseURI + '/user/profile', { headers: tokenHeader});
   }
 }
