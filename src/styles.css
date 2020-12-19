@@ -109,87 +109,10 @@ html{
       opacity: 0,8;
       width: 100%;
       position: fixed;
+      z-index: 1;
     }
     .footer{
       text-align: center;
     }
 
-  /* REGISTRATION */
-
-  .register{
-    margin: 0 auto;
-    font-family: 'Crimson Text', serif;
-  }
-
-  input.form-control,input.form-control:focus{
-    background-color: rgb(243, 239, 237);
-    color: black;
-    border-radius:10px; 
-    width: 80%;
-    float: center;
-    margin: 0 auto;
-  }
-  input.form-control:focus{
-    box-shadow: none;
-  }
-  
-  button[type=submit].btn{
-    border-radius:20px;
-    background-color: #000000;
-    color: #fff;
-  }
-  .form-group{ opacity:0;
-    -webkit-animation:fadeIn ease-in 1;
-    -moz-animation:fadeIn ease-in 1;
-    animation:fadeIn ease-in 1;
-  
-    -webkit-animation-fill-mode:forwards;
-    -moz-animation-fill-mode:forwards;
-    animation-fill-mode:forwards;
-  
-    -webkit-animation-duration:1s;
-    -moz-animation-duration:1s;
-    animation-duration:1s;}
-  div.form-group label{
-    color:black;
-    font-weight: bold;
-  }
-  div.form-group.required>label:first-child:after{
-    content: "*";
-    color: #dc3545;
-    padding-left: 2px;
-  }
-  #toast-container>div{
-    opacity: 1;
-  }
-  form{
-    margin:0px;
-  }
-  .row{
-    padding: 10px 20px;
-    margin-top: 10px;
-  }
-  .containerTwo{
-    background-color: darkgray;
-    padding: 15px;
-    border:2px solid black;
-    border-radius: 2em;
-    margin-top: 20%;
-  }
-  .container{
-    margin-left: auto;
-    margin-right: auto;
-    padding: 15px;
-  }
-  .form__field__error {
-    color: #b80202;
-    margin: .25rem 0;
-    font-size: 12px;
-    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-    max-height: 30%;
-    opacity: 0;
-  }
-  .form-control:invalid ~ .form__field__error {
-    max-height: 40px;
-    opacity: 1;
-  }
+ 
