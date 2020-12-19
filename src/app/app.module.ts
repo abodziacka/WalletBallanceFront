@@ -16,6 +16,12 @@ import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { UserService } from './shared/user.service';
 import { LoginComponent } from './user/login/login.component';
+import { FunctionsComponent } from './functions/functions.component';
+import { AddBillComponent } from './functions/add-bill/add-bill.component';
+import { MyBillsComponent } from './functions/my-bills/my-bills.component';
+import { DiagramsComponent } from './functions/diagrams/diagrams.component';
+import { BudgetComponent } from './functions/budget/budget.component';
+import { MyAccountComponent } from './functions/my-account/my-account.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +30,13 @@ import { LoginComponent } from './user/login/login.component';
     NavMenuComponent,
     UserComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    FunctionsComponent,
+    AddBillComponent,
+    MyBillsComponent,
+    DiagramsComponent,
+    BudgetComponent,
+    MyAccountComponent
   ],
   imports: [
     BrowserModule,

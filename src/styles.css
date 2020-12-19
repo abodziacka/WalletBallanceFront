@@ -6,6 +6,9 @@
         
 
 }
+html{
+  scroll-behavior: smooth;
+}
 .container{
     max-width: 1200px;
     margin: 0 auto;
@@ -164,6 +167,7 @@
   }
   .row{
     padding: 10px 20px;
+    margin-top: 10px;
   }
   .containerTwo{
     background-color: darkgray;

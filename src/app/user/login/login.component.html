@@ -38,14 +38,27 @@
         <input type="text" #UserName="ngModel" id="login" class="fadeIn second" name="Email" [(ngModel)]="formModel.Email" placeholder="Email" required>
         <input type="text" #Password="ngModel" id="password" class="fadeIn third" name="Password" [(ngModel)]="formModel.Password" placeholder="Password" required>
         <!-- <input type="submit" class="fadeIn fourth" value="Log In"> -->
-        <button type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">Log in</button>
-      
+        <div class="form-row">
+            <div class="form-group col-md-8 offset-md-2">
+            <button type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">Log in</button>
+               
+            </div>
+            <!-- <div class="form-row">
+                <button class="btn btn-danger my-2 my-sm-0" [routerLink]="['/user/login']"> {{'LOGIN.REMIND' | translate }}</button>
+            </div>  -->
+        </div>
       
     </form>
 
     <!-- Remind Passowrd -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+        <div>
+            <a class="underlineHover" href="#">Forgot Password?</a>
+        </div>
+        <div>
+            <a class="underlineHover" [routerLinkActive]="['link-active']" [routerLink]="['/user/registration']">Don't have an account?</a>
+        </div>
+
     </div>
 
   </div>
