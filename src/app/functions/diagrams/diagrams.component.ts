@@ -11,5 +11,4 @@ export class DiagramsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

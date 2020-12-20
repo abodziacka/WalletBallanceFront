@@ -7,6 +7,7 @@
       <div class="navbar-nav">
         <!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a> -->
         <a class="nav-item nav-link" (click)="onClickScroll('about')" href="#about">About us</a>
+        <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']">My account</a>
         <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/user/login']">Login</a>
         <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/user/registration']">Register</a>
 

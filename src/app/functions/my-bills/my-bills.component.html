@@ -17,24 +17,30 @@
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
-            <td><button type="submit" class="btn btn-primary mb-2">Add</button></td>
+            <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;">Edit</button>
+              <button type="submit" class="btn btn-primary mb-2" >Delete</button></td>
+
           </tr>
           <tr>
             <th scope="row">2</th>
             <td>Jacob</td>
             <td>Thornton</td>
             <td>@mdo</td>
-            <td><button type="submit" class="btn btn-primary mb-2">Add</button></td>
+            <td><button type="submit" class="btn btn-primary mb-2"style="margin: 4px;">Edit</button>
+              <button type="submit" class="btn btn-primary mb-2">Delete</button></td>
+
           </tr>
           <tr>
             <th scope="row">3</th>
             <td>Larry</td>
             <td>the Bird</td>
             <td>@mdo</td>
-            <td><button type="submit" class="btn btn-primary mb-2">Add</button></td>
+            <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;">Edit</button>
+              <button type="submit" class="btn btn-primary mb-2">Delete</button></td>
+
           </tr>
         </tbody>
       </table>
 
-      <button type="submit" class="btn btn-primary mb-2">Add new bill</button>
+      <button type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/add-bill']">Add new bill</button>
 </div>
