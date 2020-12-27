@@ -3,7 +3,7 @@ import { UserService } from 'src/app/shared/user.service';
 import { NgForm } from '@angular/forms';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { Toast, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +16,27 @@ export class LoginComponent implements OnInit {
     Email: '',
     Password: ''
   };
-  constructor() {
+  constructor(private service: UserService, private router: Router, private toastr:ToastrService) {
 
   }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(form: NgForm) {
+    this.service.login(form.value).subscribe(
+      (res: any) => {
+        localStorage.setItem('token', res.token);
+        this.router.navigateByUrl('/functions/my-bills');
+      },
+      err => {
+        if (err.status == 400) {
+          this.toastr.error('Incorect username or password.', 'Authentication failed.');
+        } else {
+          console.log(err);
+        }
+      }
+    );
   }
 
 }

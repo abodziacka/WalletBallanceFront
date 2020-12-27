@@ -34,9 +34,9 @@
     <!-- Tabs Titles -->
     <h1 class="register">Login</h1>
     <!-- Login Form -->
-    <form #form='ngForm' autocomplete="off">
+    <form #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
         <input type="text" #UserName="ngModel" id="login" class="fadeIn second" name="Email" [(ngModel)]="formModel.Email" placeholder="Email" required>
-        <input type="text" #Password="ngModel" id="password" class="fadeIn third" name="Password" [(ngModel)]="formModel.Password" placeholder="Password" required>
+        <input type="password" #Password="ngModel" id="password" class="fadeIn third" name="Password" [(ngModel)]="formModel.Password" placeholder="Password" required>
         <!-- <input type="submit" class="fadeIn fourth" value="Log In"> -->
         <div class="form-row">
             <div class="form-group col-md-8 offset-md-2">
