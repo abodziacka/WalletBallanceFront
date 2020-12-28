@@ -32,9 +32,17 @@
                 <div class="form-group col-md-8 offset-md-2">
                     <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid">Sign up</button>
                 </div>
+                
                 <!-- <div class="form-row">
                     <button class="btn btn-danger my-2 my-sm-0" [routerLink]="['/user/login']"> {{'LOGIN.REMIND' | translate }}</button>
                 </div>  -->
+            </div>
+            <div id="formFooter">
+                    
+                <div>
+                    <a class="underlineHover" [routerLinkActive]="['link-active']" [routerLink]="['/user/login']">Have an account already?</a>
+                </div>
+        
             </div>
     
         </form>
