@@ -12,12 +12,10 @@ import { AuthGuard } from './../auth/auth.guard';
 })
 export class NavMenuComponent implements OnInit {
 
-  isLoggedIn!: Observable<boolean>;
 
-  constructor(private viewportScroller: ViewportScroller, private router: Router, private authGuard: AuthGuard) { }
+  constructor(private viewportScroller: ViewportScroller, private router: Router) { }
 
   ngOnInit(): void {
-    
   }
 
   onClickScroll(elementId: string): void{
@@ -27,6 +25,15 @@ export class NavMenuComponent implements OnInit {
   onLogout() {
     localStorage.removeItem('token');
     this.router.navigate(['']);
+  }
+
+  hide(){
+    if(localStorage.getItem('token')!=null){
+      return true;
+    }
+    else{
+      return false; 
+    }
   }
 
 }
