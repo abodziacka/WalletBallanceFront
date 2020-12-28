@@ -10,6 +10,7 @@ import { MyBillsComponent } from './functions/my-bills/my-bills.component';
 import { DiagramsComponent } from './functions/diagrams/diagrams.component';
 import { BudgetComponent } from './functions/budget/budget.component';
 import { MyAccountComponent } from './functions/my-account/my-account.component';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
@@ -22,13 +23,13 @@ const routes: Routes = [
         { path: 'login', component: LoginComponent }]
   },
   {
-    path: 'functions', component: FunctionsComponent,
+    path: 'functions', component: FunctionsComponent, 
       children: [
-      { path: 'my-bills', component: MyBillsComponent },
-      { path: 'add-bill', component: AddBillComponent },
-      { path: 'diagrams', component: DiagramsComponent },
-      { path: 'budget', component: BudgetComponent },
-      { path: 'my-account', component: MyAccountComponent }]
+      { path: 'my-bills', component: MyBillsComponent, canActivate: [AuthGuard] },
+      { path: 'add-bill', component: AddBillComponent,canActivate: [AuthGuard] },
+      { path: 'diagrams', component: DiagramsComponent,canActivate: [AuthGuard] },
+      { path: 'budget', component: BudgetComponent,canActivate: [AuthGuard] },
+      { path: 'my-account', component: MyAccountComponent,canActivate: [AuthGuard]}]
 }
 
 
