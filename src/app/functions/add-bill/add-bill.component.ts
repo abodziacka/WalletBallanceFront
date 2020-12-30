@@ -21,6 +21,10 @@ export class AddBillComponent implements OnInit {
     console.log(this.model);
   }
 
+  delete(){
+    this.Products.splice(this.index,1);
+  }
+
   newProduct() {
       this.add();
       this.index = this.index + 1;

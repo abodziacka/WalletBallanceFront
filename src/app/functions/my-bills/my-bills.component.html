@@ -12,31 +12,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          <tr *ngFor="let e of lis;">
+            <th scope="row">{{ e.id }}</th>
+            <td>{{ e.date}}</td>
+            <td>{{ e.shop }}</td>
+            <td>{{ e.city }}</td>
             <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;">Edit</button>
               <button type="submit" class="btn btn-primary mb-2" >Delete</button></td>
-
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@mdo</td>
-            <td><button type="submit" class="btn btn-primary mb-2"style="margin: 4px;">Edit</button>
-              <button type="submit" class="btn btn-primary mb-2">Delete</button></td>
-
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@mdo</td>
-            <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;">Edit</button>
-              <button type="submit" class="btn btn-primary mb-2">Delete</button></td>
 
           </tr>
         </tbody>

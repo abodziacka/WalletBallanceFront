@@ -1,9 +1,9 @@
 export class Bill {
     constructor(
       public id: number,
-      public Shop: string,
-      public City: string,
-      public Date: Date
+      public shop: string,
+      public city: string,
+      public date: Date
     ) {  }
   }
   
