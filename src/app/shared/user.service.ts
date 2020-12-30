@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { Bill } from '../bill';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +13,8 @@ export class UserService {
 
   constructor(private fb:FormBuilder, private http:HttpClient) { }
   readonly BaseURI='http://localhost:55284';
+
+  Bills: Array<Bill> = [];
 
   formModel = this.fb.group({
     UserName :['', Validators.required],
@@ -55,7 +61,15 @@ export class UserService {
     return this.http.get(this.BaseURI + '/UserProfile');
   }
 
-  getBills(){
+  getBills(): Observable<any>{
+   // this.Bills.push(this.http.get(this.BaseURI + '/functions/get-bills'));
     return this.http.get(this.BaseURI + '/functions/get-bills');
   }
+
+  addBill(bill: Bill) {
+    return this.http.post(this.BaseURI + '/functions/add-bill', bill);
+    //return this.http.post<any>(`${environment.apiUrl}`+ '/api/trees',json,{headers: new HttpHeaders({ 
+    //    'Content-Type':'application/json'}),responseType: 'json'});
+     }
+
 }

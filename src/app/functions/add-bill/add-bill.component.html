@@ -17,42 +17,43 @@
                 <div class="one">
                     <div class="form-row align-items-center">
                         <div class="col-auto">
-                          <label class="sr-only" for="inlineFormInput">Name</label>
-                          <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Shop">
+                          <input type="text" class="form-control mb-2" id="inlineFormInput1"  formControlName="firstCtrlShop" placeholder="Shop"  [(ngModel)]="bill.shop">
                         </div>
                         <div class="col-auto">
-                            <label class="sr-only" for="inlineFormInput">Name</label>
-                            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="City">
-                          </div>
-                          <div class="col-auto">
-                            <label class="sr-only" for="inlineFormInput">Name</label>
-                            <input type="date" class="form-control mb-2" id="inlineFormInput" placeholder="Date">
-                          </div>
+                          <input type="text" class="form-control mb-2" id="inlineFormInput2"  formControlName="firstCtrlCity" placeholder="City" [(ngModel)]="bill.city">
+                        </div>
+                        <div class="col-auto">
+                          <input type="date" class="form-control mb-2" id="inlineFormInput3"  formControlName="firstCtrlDate" placeholder="Date" [(ngModel)]="bill.date"> 
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="newBill()">Save all</button>
+
                     </div>
                 </div>
+              </form>
                 
+            <form [formGroup]="secondFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
+
                 <div class="two">
                     <div class="form-row align-items-center">
                         <div class="col-auto">
                           <label class="sr-only" for="inlineFormInput">Name</label>
-                          <input type="text" class="form-control mb-2" formControlName="firstCtrl" [(ngModel)]="model.Name" id="inlineFormInput" placeholder="Product">
+                          <input type="text" class="form-control mb-2" formControlName="secondCtrlName" [(ngModel)]="model.name" id="inlineFormInput" placeholder="Product">
                         </div>
                         <div class="col-auto">
                             <label class="sr-only" for="inlineFormInput">Name</label>
-                            <input type="text" class="form-control mb-2" formControlName="firstCtrl" [(ngModel)]="model.Category" id="inlineFormInput" placeholder="Category">
+                            <input type="number" class="form-control mb-2" formControlName="secondCtrlCategory" [(ngModel)]="model.category" id="inlineFormInput" placeholder="Category">
                           </div>
                           <div class="col-auto">
                             <label class="sr-only" for="inlineFormInput">Name</label>
-                            <input type="text" class="form-control mb-2" formControlName="firstCtrl" [(ngModel)]="model.Amount" id="inlineFormInput" placeholder="Amount">
+                            <input type="number" class="form-control mb-2" formControlName="secondCtrlAmount" [(ngModel)]="model.amount" id="inlineFormInput" placeholder="Amount">
                           </div>
                           <div class="col-auto">
                             <label class="sr-only" for="inlineFormInput">Name</label>
-                            <input type="text" class="form-control mb-2" formControlName="firstCtrl" [(ngModel)]="model.Price" id="inlineFormInput" placeholder="Price">
+                            <input type="number" class="form-control mb-2" formControlName="secondCtrlPrice" [(ngModel)]="model.price" id="inlineFormInput" placeholder="Price">
                           </div>
                        
                         <div class="col-auto">
-                          <button type="submit" class="btn btn-primary mb-2" (click)="newProduct(); form.reset()">Add</button>
-                          <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;">Save all</button>
+                          <button type="submit" class="btn btn-primary mb-2" (click)="newProduct()">Add</button>
                         </div>
                     </div>
                 </div>
@@ -71,16 +72,16 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let model of Products">
-                        <th scope="row">{{model.id}}</th>
-                        <td>{{model.Name}}</td>
-                        <td>{{model.Category}}</td>
-                        <td>{{model.Amount}}</td>
-                        <td>{{model.Price}}</td>
+                        <th scope="row"></th>
+                        <td>{{model.name}}</td>
+                        <td>{{model.category}}</td>
+                        <td>{{model.amount}}</td>
+                        <td>{{model.price}}</td>
                         <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="delete()">Delete</button></td>
 
                       </tr>
                     </tbody>
                   </table>
-            </form>
+                </form>
         </div>
 </div>
