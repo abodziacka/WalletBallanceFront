@@ -23,6 +23,8 @@ import { DiagramsComponent } from './functions/diagrams/diagrams.component';
 import { BudgetComponent } from './functions/budget/budget.component';
 import { MyAccountComponent } from './functions/my-account/my-account.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { BillDetailComponent } from './functions/my-bills/bill-detail/bill-detail.component';
+import { EditBillComponent } from './functions/my-bills/edit-bill/edit-bill.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     MyBillsComponent,
     DiagramsComponent,
     BudgetComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    BillDetailComponent,
+    EditBillComponent
   ],
   imports: [
     BrowserModule,

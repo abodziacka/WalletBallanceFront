@@ -8,6 +8,7 @@ import { ThrowStmt } from '@angular/compiler';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
+    isLoggedIn = false;
     constructor(private router: Router) {
 
     }

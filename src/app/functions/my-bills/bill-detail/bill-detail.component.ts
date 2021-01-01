@@ -10,11 +10,11 @@ import { Category } from 'src/app/Category';
 import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 
 @Component({
-  selector: 'app-add-bill',
-  templateUrl: './add-bill.component.html',
-  styleUrls: ['./add-bill.component.css']
+  selector: 'app-bill-detail',
+  templateUrl: './bill-detail.component.html',
+  styleUrls: ['./bill-detail.component.css']
 })
-export class AddBillComponent implements OnInit { 
+export class BillDetailComponent implements OnInit {
 
   readonly BaseURI='http://localhost:55284';
   li:any; 

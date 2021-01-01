@@ -41,6 +41,8 @@
                         </div>
                         <div class="col-auto">
                           <select class="form-control mb-2" required formControlName="secondCtrlCategory" [(ngModel)]="model.categoryId" id="inlineFormInput" placeholder="Category" name="category">
+                            <option> haha</option>
+                            
                             <option *ngFor="let e of lis" [value]="e.id">{{e.name}}</option>
 
                           </select>

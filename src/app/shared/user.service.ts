@@ -72,4 +72,9 @@ export class UserService {
     //    'Content-Type':'application/json'}),responseType: 'json'});
      }
 
+  
+     getBill(id:number): Observable<any>{
+       return this.http.get(this.BaseURI + '/functions/get-bill?id=${id}');
+     }
+
 }

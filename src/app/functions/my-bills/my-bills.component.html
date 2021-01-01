@@ -17,7 +17,8 @@
             <td>{{ e.date}}</td>
             <td>{{ e.shop }}</td>
             <td>{{ e.city }}</td>
-            <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;">Edit</button>
+            <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills/bill-detail', e.id]" >Details</button>
+              <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills/edit-bill', e.id]" >Edit</button>
               <button type="submit" class="btn btn-primary mb-2" >Delete</button></td>
 
           </tr>

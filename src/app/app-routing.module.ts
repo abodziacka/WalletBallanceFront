@@ -11,6 +11,8 @@ import { DiagramsComponent } from './functions/diagrams/diagrams.component';
 import { BudgetComponent } from './functions/budget/budget.component';
 import { MyAccountComponent } from './functions/my-account/my-account.component';
 import { AuthGuard } from './auth/auth.guard';
+import { BillDetailComponent } from './functions/my-bills/bill-detail/bill-detail.component';
+import { EditBillComponent } from './functions/my-bills/edit-bill/edit-bill.component';
 
 
 const routes: Routes = [
@@ -25,7 +27,12 @@ const routes: Routes = [
   {
     path: 'functions', component: FunctionsComponent, 
       children: [
-      { path: 'my-bills', component: MyBillsComponent, canActivate: [AuthGuard] },
+      { path: 'my-bills/bill-detail/:id', component: BillDetailComponent,canActivate: [AuthGuard] },
+      { path: 'my-bills/edit-bill/:id', component: EditBillComponent ,canActivate: [AuthGuard] },
+      { path: 'my-bills', component: MyBillsComponent, canActivate: [AuthGuard] ,
+        children:[
+          {path: 'bill-detail', component: BillDetailComponent, canActivate: [AuthGuard]}
+            ]},
       { path: 'add-bill', component: AddBillComponent,canActivate: [AuthGuard] },
       { path: 'diagrams', component: DiagramsComponent,canActivate: [AuthGuard] },
       { path: 'budget', component: BudgetComponent,canActivate: [AuthGuard] },
