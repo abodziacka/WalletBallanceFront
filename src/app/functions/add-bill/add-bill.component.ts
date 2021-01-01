@@ -54,6 +54,7 @@ export class AddBillComponent implements OnInit {
     console.log(this.model);
   }
   newProduct() {
+    this.model.categoryId = Number(this.model.categoryId);
     this.add();
     this.index = this.index + 1;
     this.model = new Product('');
@@ -92,7 +93,7 @@ export class AddBillComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       firstCtrlShop: ['', Validators.required],
       firstCtrlCity: ['', Validators.required],
-      firstCtrlDate: [new Date(), Validators.required]
+      firstCtrlDate: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrlName: ['', Validators.required],
