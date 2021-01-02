@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { UserService } from 'src/app/shared/user.service';
 import { Bill } from 'src/app/bill';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -20,8 +22,8 @@ export class MyBillsComponent implements OnInit {
   public noData: any;
   public results = [];
 
-  constructor(private service: UserService,private http:HttpClient) { }
-
+  constructor(private service: UserService,private http:HttpClient, private modalService: NgbModal,private router: Router) { }
+  closeResult = '';
 
   ngOnInit(): void {
     this.http.get(this.BaseURI + '/functions/get-bills') 
@@ -35,6 +37,39 @@ export class MyBillsComponent implements OnInit {
       this.lis=this.li; 
     }); 
    
+  }
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  delete(id?:number){
+    if (id!=undefined){
+      this.service.deleteBill(id).subscribe(
+        (res: any) => {
+          this.ngOnInit();
+        },
+        err => {
+            console.log(err);
+        }
+      );
+      this.lis.splice(id,1);
+    }
+
+    
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
   // getAll(){

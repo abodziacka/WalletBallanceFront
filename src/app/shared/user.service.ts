@@ -77,11 +77,16 @@ export class UserService {
      }
 
   
-     getBill(id:number): Observable<any>{
-       return this.http.get(this.BaseURI + '/functions/get-bill?id=${id}');
-     }
+  getBill(id:number): Observable<any>{
+    return this.http.get(this.BaseURI + '/functions/get-bill?id=${id}');
+  }
 
-     updateBill(bill:Bill):Observable<any>{
-       return this.http.put(this.BaseURI+'/functions/update-bill',bill, this.httpOptions);     }
+  updateBill(bill:Bill):Observable<any>{
+     return this.http.put(this.BaseURI+'/functions/update-bill',bill, this.httpOptions);     
+  }
+
+  deleteBill(id: number): Observable<any>{
+    return this.http.delete(this.BaseURI+'/functions/delete-bill-by-id?billId='+id, this.httpOptions);
+  }
 
 }

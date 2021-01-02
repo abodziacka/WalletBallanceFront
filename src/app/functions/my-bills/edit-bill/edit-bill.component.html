@@ -80,13 +80,13 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let model of Products">
+                      <tr *ngFor="let model of Products; index as i;">
                         <th scope="row"></th>
                         <td>{{model.name}}</td>
                         <td>{{getCategoryName(model.categoryId).name}}</td>
                         <td>{{model.amount}}</td>
                         <td>{{model.price}}</td>
-                        <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="delete()">Delete</button></td>
+                        <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="delete(i)">Delete</button></td>
 
                       </tr>
                     </tbody>
