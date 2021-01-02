@@ -1,0 +1,45 @@
+<div class="content">
+        
+        <div class="col">
+            <p id="h2">Your categories</p>
+                
+            <form style="margin: 0 auto;"[formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
+
+                <div class="two" style="margin-left: 5%;">
+                    <div class="form-row align-items-center">
+                        
+                          <div class="col-auto">
+                            <input type="text" class="form-control mb-2"id="inlineFormInput1"  formControlName="firstCtrlName" placeholder="Category"  [(ngModel)]="category.name">
+                          </div>
+                          <div class="col-auto">
+                            <input type="text" class="form-control mb-2" id="inlineFormInput" formControlName="firstCtrlDesc" placeholder="Description"  [(ngModel)]="category.description">
+                          </div>
+                       
+                        <div class="col-auto">
+                          <button type="submit" class="btn btn-primary mb-2" (click)="addNewCategory()">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-striped" style="width: 70%; margin: 0 auto; margin-top: 5%;">
+                    <thead>
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Description</th>
+
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let e of lis">
+                        <th scope="row"></th>
+                        <td>{{e.name}}</td>
+                        <td>{{e.description}}</td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </form>
+        </div>
+</div>

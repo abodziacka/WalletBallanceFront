@@ -1,40 +1,33 @@
 
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Budżet</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form>
-      <label>Budżet Ogółem</label>
-      <input type="text" class="form-control mb-2"  id="inlineFormInput" placeholder="Budżet Ogółem">
-      <label>Żywność</label>
-      <input type="text" class="form-control mb-2"  id="inlineFormInput" placeholder="Żywność">
-      <label>Odzież</label>
-      <input type="text" class="form-control mb-2"  id="inlineFormInput" placeholder="Odzież">
-      <label>Wydatki stałe</label>
-      <input type="text" class="form-control mb-2"  id="inlineFormInput" placeholder="Wydatki stałe">
-
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-  </div>
-</ng-template>
 
             <div class="content">
-            <p id="h2">Your budgets</p>
-
-                <table class="table table-striped">
+            <p id="h2">Budżet</p>
+            <form >
+              
+              <div style="display: flex; width: 80%; ">
+                <label>Budżet Ogółem</label> 
+                <input type="text" class="form-control mb-2"  id="inlineFormInput" placeholder="Budżet Ogółem">
+                <label>Od</label> 
+                <div class="col-auto">
+                  <input type="date" class="form-control mb-2" id="inlineFormInput3" placeholder="Date"> 
+                </div>
+                <label>Do</label> 
+                <div class="col-auto">
+                  <input type="date" class="form-control mb-2" id="inlineFormInput3"  placeholder="Date"> 
+                </div>
+        
+              </div>
+              <button class="btn btn-lg btn-outline-primary">Add new budget</button>
+              
+        
+            </form>
+                <table class="table table-striped" style="margin-top: 5%;">
                     <thead>
                       <tr>
                         <th scope="col"></th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Budget</th>
-                        <th scope="col">Food</th>
-                        <th scope="col">Clothes</th>
+                        <th scope="col">Od</th>
+                        <th scope="col">Do</th>
+                        <th scope="col">Budżet</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -43,25 +36,9 @@
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>@mdo</td>
-                        <td>aa</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@mdo</td>
-                        <td>aa</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@mdo</td>
-                        <td>aa</td>
                       </tr>
                     </tbody>
                   </table>
             
-                  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add new budget</button>
             </div>
             

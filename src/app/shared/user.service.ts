@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Bill } from '../bill';
 import { environment } from 'src/environments/environment.prod';
+import { Category } from '../Category';
 
 @Injectable({
   providedIn: 'root'
@@ -72,9 +73,10 @@ export class UserService {
 
   addBill(bill: Bill) {
     return this.http.post(this.BaseURI + '/functions/add-bill', bill);
-    //return this.http.post<any>(`${environment.apiUrl}`+ '/api/trees',json,{headers: new HttpHeaders({ 
-    //    'Content-Type':'application/json'}),responseType: 'json'});
      }
+     addCategory(category: Category) {
+      return this.http.post(this.BaseURI + '/functions/add-category', category);
+       }
 
   
   getBill(id:number): Observable<any>{

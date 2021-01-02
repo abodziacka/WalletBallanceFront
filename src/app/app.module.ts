@@ -26,6 +26,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { BillDetailComponent } from './functions/my-bills/bill-detail/bill-detail.component';
 import { EditBillComponent } from './functions/my-bills/edit-bill/edit-bill.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CategoriesComponent } from './functions/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BudgetComponent,
     MyAccountComponent,
     BillDetailComponent,
-    EditBillComponent
+    EditBillComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,

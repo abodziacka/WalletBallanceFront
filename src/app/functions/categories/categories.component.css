@@ -1,0 +1,49 @@
+.addbill{
+    display: flex;
+}
+.photo{
+    margin-top: 20%;
+    justify-content: center;
+
+}
+input[type="text"]{
+    width: 200px;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    padding: 0 auto;
+}
+option{
+    width: 200px;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    padding: 0 auto;
+}
+form{
+    width: 80%;
+    margin: 0 auto;
+}
+.one{
+    margin-top: 5%;
+}
+.two{
+    margin-top: 10%;
+}
+.table{
+    margin-top: 5%;
+
+}
+#h2{
+    text-align: center;
+    font: normal normal normal 40px/58px Lucida Bright;
+    letter-spacing: 0px;
+    color: #3A2A2A;
+    text-shadow: 5px 3px 6px #a19692;
+    opacity: 1;
+    margin-top: 6%;
+  }
+  .content{
+    width: 70%;
+    margin: 0 auto;
+}  
