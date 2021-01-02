@@ -56,6 +56,7 @@ export class EditBillComponent implements OnInit {
     console.log(this.model);
   }
   newProduct() {
+    this.model.categoryId = Number(this.model.categoryId);
     this.add();
     this.index = this.index + 1;
     this.model = new Product('');
@@ -66,23 +67,26 @@ export class EditBillComponent implements OnInit {
     this.Products.splice(this.index,1);
   }
 
-
   
-  newBill(){
+  
+  save(){
     this.city=this.bill.city;
     this.shop=this.bill.shop;
     this.date=this.bill.date;
     this.Products=this.bill.products;
     console.log(this.bill);
     
-    this.service.addBill(this.bill).subscribe(
+    
+    this.service.updateBill(this.bill).subscribe(
       (res: any) => {
         this.router.navigateByUrl('/functions/my-bills');
       },
       err => {
           console.log(err);
       }
-    );;
+    );
+
+    this.http.put(this.BaseURI, Bill)
   }
 
   onSubmit() {
@@ -129,6 +133,8 @@ export class EditBillComponent implements OnInit {
         console.log(this.lis);
       }); 
     }); 
+
+    
 
   }
 

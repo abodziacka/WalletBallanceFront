@@ -14,6 +14,10 @@ export class UserService {
   constructor(private fb:FormBuilder, private http:HttpClient) { }
   readonly BaseURI='http://localhost:55284';
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   Bills: Array<Bill> = [];
 
   formModel = this.fb.group({
@@ -76,5 +80,8 @@ export class UserService {
      getBill(id:number): Observable<any>{
        return this.http.get(this.BaseURI + '/functions/get-bill?id=${id}');
      }
+
+     updateBill(bill:Bill):Observable<any>{
+       return this.http.put(this.BaseURI+'/functions/update-bill',bill, this.httpOptions);     }
 
 }

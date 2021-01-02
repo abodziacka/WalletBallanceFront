@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DiagramsComponent implements OnInit {
 
   constructor() { }
-
+  active = 1;
   ngOnInit(): void {
   }
 }

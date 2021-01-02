@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Bill } from 'src/app/bill';
 import { Product } from 'src/app/product';
 import { UserService } from 'src/app/shared/user.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Category } from 'src/app/Category';
@@ -18,6 +18,7 @@ export class BillDetailComponent implements OnInit {
 
   readonly BaseURI='http://localhost:55284';
   li:any; 
+  li2:any; 
   lis: Array<Category> = []; 
 
   category=new Category("");
@@ -39,7 +40,7 @@ export class BillDetailComponent implements OnInit {
   jsonString!: string;
 
 
-  constructor(private _formBuilder: FormBuilder, private service: UserService, private router: Router, private http:HttpClient) { }
+  constructor(private _formBuilder: FormBuilder, private service: UserService, private router: Router, private http:HttpClient, private activatedRoute: ActivatedRoute) { }
 
   getCategoryName(id?: number): Category{
     var findCategory = this.lis.find(element => element.id == id);
@@ -81,7 +82,6 @@ export class BillDetailComponent implements OnInit {
           console.log(err);
       }
     );;
-    //this.Products=[];
   }
 
   onSubmit() {
@@ -89,6 +89,7 @@ export class BillDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    var id = this.activatedRoute.snapshot.paramMap.get('id');
     this.firstFormGroup = this._formBuilder.group({
       firstCtrlShop: ['', Validators.required],
       firstCtrlCity: ['', Validators.required],
@@ -111,19 +112,23 @@ export class BillDetailComponent implements OnInit {
       this.li=Response; 
       this.lis=this.li; 
       console.log(this.lis);
+      
+      this.http.get(this.BaseURI + '/functions/get-bill?id='+id) 
+        .subscribe(Response => { 
+  
+        // If response comes hideloader() function is called 
+        // to hide that loader  
+        
+        console.log(Response) 
+        this.li2=Response; 
+        this.bill=this.li2;
+        var dateString = (this.bill.date + "").split('T')[0];
+        this.bill.date = dateString;
+        this.Products=this.li2.products; 
+        console.log(this.lis);
+      }); 
     }); 
+
   }
-
-  // submitBill(){
-
-  //   this.jsonString=JSON.stringify({userId: id, Name: this.title, Members: this.names, Relations: this.relations});
-
-  //   this.newTree.sendTree(this.jsonString).pipe(first()).subscribe(
-  //     data => {
-  //       console.log(data);
-  //     },
-  //     err => {
-  //     });
-  // }
 
 }

@@ -25,6 +25,7 @@ import { MyAccountComponent } from './functions/my-account/my-account.component'
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { BillDetailComponent } from './functions/my-bills/bill-detail/bill-detail.component';
 import { EditBillComponent } from './functions/my-bills/edit-bill/edit-bill.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { EditBillComponent } from './functions/my-bills/edit-bill/edit-bill.comp
       progressBar:true
     }),
     FormsModule,
-    CommonModule
+    CommonModule,
+    NgbModule
     
   ],
   providers: [UserService,{

@@ -1,33 +1,32 @@
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
- Add new budget
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Budżet</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
-</div>
+  <div class="modal-body">
+    <form>
+      <label>Budżet Ogółem</label>
+      <input type="text" class="form-control mb-2"  id="inlineFormInput" placeholder="Budżet Ogółem">
+      <label>Żywność</label>
+      <input type="text" class="form-control mb-2"  id="inlineFormInput" placeholder="Żywność">
+      <label>Odzież</label>
+      <input type="text" class="form-control mb-2"  id="inlineFormInput" placeholder="Odzież">
+      <label>Wydatki stałe</label>
+      <input type="text" class="form-control mb-2"  id="inlineFormInput" placeholder="Wydatki stałe">
 
-
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
 
             <div class="content">
+            <p id="h2">Your budgets</p>
+
                 <table class="table table-striped">
                     <thead>
                       <tr>
@@ -63,6 +62,6 @@
                     </tbody>
                   </table>
             
-                 
+                  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add new budget</button>
             </div>
             

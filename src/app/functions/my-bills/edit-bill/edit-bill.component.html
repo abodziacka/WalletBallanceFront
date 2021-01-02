@@ -25,7 +25,7 @@
                         <div class="col-auto">
                           <input type="date" class="form-control mb-2" id="inlineFormInput3"  formControlName="firstCtrlDate" placeholder="Date" [(ngModel)]="bill.date"> 
                         </div>
-                        <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="newBill()">Save all</button>
+                        <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="save()">Save all</button>
 
                     </div>
                 </div>
@@ -41,8 +41,7 @@
                         </div>
                         <div class="col-auto">
                           <select class="form-control mb-2" required formControlName="secondCtrlCategory" [(ngModel)]="model.categoryId" id="inlineFormInput" placeholder="Category" name="category">
-                            <option> haha</option>
-                            
+
                             <option *ngFor="let e of lis" [value]="e.id">{{e.name}}</option>
 
                           </select>
@@ -92,6 +91,9 @@
                       </tr>
                     </tbody>
                   </table>
+      <button type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']">Back</button>
+
                 </form>
+
         </div>
 </div>

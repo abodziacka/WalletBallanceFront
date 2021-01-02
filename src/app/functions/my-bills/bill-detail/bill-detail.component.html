@@ -1,97 +1,47 @@
 <div class="addbill">
-    <div class="photo">
-        <div class="col-4`">
-            <div class="input-group mb-3">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="inputGroupFile01">
-                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                </div>
+      
+      <div class="col">
+          <p id="h2">Bill Details</p>
+          <form [formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
+              <div class="one">
+                  <div class="form-row align-items-center">
+                      <div class="col-auto">
+                        <input type="text" class="form-control mb-2" id="inlineFormInput1"  formControlName="firstCtrlShop" placeholder="Shop"  [(ngModel)]="bill.shop" readonly>
+                      </div>
+                      <div class="col-auto">
+                        <input type="text" class="form-control mb-2" id="inlineFormInput2"  formControlName="firstCtrlCity" placeholder="City" [(ngModel)]="bill.city" readonly>
+                      </div>
+                      <div class="col-auto">
+                        <input type="date" class="form-control mb-2" id="inlineFormInput3"  formControlName="firstCtrlDate" placeholder="Date" [(ngModel)]="bill.date" readonly> 
+                      </div>
+
+                  </div>
               </div>
-              
-        </div>
-    </div>
-        
-        <div class="col">
-            <p id="h2">Enter the data from the bill</p>
-            <form [formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
-                <div class="one">
-                    <div class="form-row align-items-center">
-                        <div class="col-auto">
-                          <input type="text" class="form-control mb-2" id="inlineFormInput1"  formControlName="firstCtrlShop" placeholder="Shop"  [(ngModel)]="bill.shop">
-                        </div>
-                        <div class="col-auto">
-                          <input type="text" class="form-control mb-2" id="inlineFormInput2"  formControlName="firstCtrlCity" placeholder="City" [(ngModel)]="bill.city">
-                        </div>
-                        <div class="col-auto">
-                          <input type="date" class="form-control mb-2" id="inlineFormInput3"  formControlName="firstCtrlDate" placeholder="Date" [(ngModel)]="bill.date"> 
-                        </div>
-                        <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="newBill()">Save all</button>
+            </form>
 
-                    </div>
-                </div>
-              </form>
-                
-            <form [formGroup]="secondFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
+              <table class="table table-striped" >
+                  <thead>
+                    <tr>
+                      <th scope="col"></th>
+                      <th scope="col">Product</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Price</th>
 
-                <div class="two">
-                    <div class="form-row align-items-center">
-                        <div class="col-auto">
-                          <label class="sr-only" for="inlineFormInput">Name</label>
-                          <input type="text" class="form-control mb-2" formControlName="secondCtrlName" [(ngModel)]="model.name" id="inlineFormInput" placeholder="Product">
-                        </div>
-                        <div class="col-auto">
-                          <select class="form-control mb-2" required formControlName="secondCtrlCategory" [(ngModel)]="model.categoryId" id="inlineFormInput" placeholder="Category" name="category">
-                            <option> haha</option>
-                            
-                            <option *ngFor="let e of lis" [value]="e.id">{{e.name}}</option>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let model of Products">
+                      <th scope="row"></th>
+                      <td>{{model.name}}</td>
+                      <td>{{getCategoryName(model.categoryId).name}}</td>
+                      <td>{{model.amount}}</td>
+                      <td>{{model.price}}</td>
 
-                          </select>
-                            <!-- <label class="sr-only" for="inlineFormInput">Name</label>
-                            <input type="number" class="form-control mb-2" formControlName="secondCtrlCategory" [(ngModel)]="model.category" id="inlineFormInput" placeholder="Category"> -->
-                          </div>
+                    </tr>
+                  </tbody>
+                </table>
+      <button type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']">Back</button>
 
-                         
-
-                          
-                          <div class="col-auto">
-                            <label class="sr-only" for="inlineFormInput">Name</label>
-                            <input type="number" class="form-control mb-2" formControlName="secondCtrlAmount" [(ngModel)]="model.amount" id="inlineFormInput" placeholder="Amount">
-                          </div>
-                          <div class="col-auto">
-                            <label class="sr-only" for="inlineFormInput">Name</label>
-                            <input type="number" class="form-control mb-2" formControlName="secondCtrlPrice" [(ngModel)]="model.price" id="inlineFormInput" placeholder="Price">
-                          </div>
-                       
-                        <div class="col-auto">
-                          <button type="submit" class="btn btn-primary mb-2" (click)="newProduct()">Add</button>
-                        </div>
-                    </div>
-                </div>
-
-                <table class="table table-striped" >
-                    <thead>
-                      <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Price</th>
-                        <th scope="col"></th>
-
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let model of Products">
-                        <th scope="row"></th>
-                        <td>{{model.name}}</td>
-                        <td>{{getCategoryName(model.categoryId).name}}</td>
-                        <td>{{model.amount}}</td>
-                        <td>{{model.price}}</td>
-                        <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="delete()">Delete</button></td>
-
-                      </tr>
-                    </tbody>
-                  </table>
-                </form>
-        </div>
+      </div>
 </div>
