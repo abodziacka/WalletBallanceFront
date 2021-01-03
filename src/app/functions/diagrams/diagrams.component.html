@@ -1,37 +1,83 @@
-<div style="width:80%; margin-left: 10%; margin-top: 3%;"> 
+
+<div class="content">
+  <div style="width:80%; margin-left: 10%; margin-top: 3%;"> 
   
-  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-  <li [ngbNavItem]="1">
-    <a ngbNavLink>Bieżący okres</a>
-    <ng-template ngbNavContent>
-      <div style=" margin-left: 3%; margin-top: 3%;">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <a ngbNavLink>History</a>
+      <ng-template ngbNavContent>
+        <div style=" margin-left: 3%; margin-top: 3%;">
+          
+  
+          <div style="width:40%; display: flex; margin-left: 3%; margin-top: 3%;">
+            <label>Od</label> 
+            <div class="col-auto">
+              <input type="date" class="form-control mb-2" id="inlineFormInput3" placeholder="Date"> 
+            </div>
+            <label>Do</label> 
+            <div class="col-auto">
+              <input type="date" class="form-control mb-2" id="inlineFormInput3"  placeholder="Date"> 
+            </div>
+    
+          </div>
+  
+          <table class="table table-striped" style="margin-top: 5%;">
+            <thead>
+              <tr>
+                <th scope="col">From Date</th>
+                <th scope="col">To Date</th>
+                <th scope="col">Your budget</th>
+                <th scope="col">Spent Amount</th>
+                <th scope="col">Left</th>
+                <th scope="col"></th>
+  
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let e of lisStatistic; index as i;" >
+                <td>{{e.fromDate | slice:0:10}}</td>
+                <td>{{e.toDate | slice:0:10}}</td>
+                <td>{{e.quantity }}</td>
+                <td>{{e.price}}</td>
+                <td>{{e.saveMoney}}</td>
+                <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams/detail', e.id]">Details</button></td>
+              </tr>
+            </tbody>
+          </table>
+  
+  
+  
+        </div>
+        
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <a ngbNavLink>Bieżący okres</a>
+      <ng-template ngbNavContent>
         <label>Budżet ogółem</label> 
-        <p><ngb-progressbar type="success" [value]="75" [striped]="true" [animated]="true" style="width:40%;"><i>50%</i></ngb-progressbar></p>
-      </div>
-      
-    </ng-template>
-  </li>
-  <li [ngbNavItem]="2">
-    <a ngbNavLink>Zakres</a>
-    <ng-template ngbNavContent>
-      <div style="width:40%; display: flex; margin-left: 3%; margin-top: 3%;">
-        <label>Od</label> 
-        <div class="col-auto">
-          <input type="date" class="form-control mb-2" id="inlineFormInput3" placeholder="Date"> 
-        </div>
-        <label>Do</label> 
-        <div class="col-auto">
-          <input type="date" class="form-control mb-2" id="inlineFormInput3"  placeholder="Date"> 
-        </div>
-
-      </div>
-     
-
-    </ng-template>
-  </li>
+          <p><ngb-progressbar type="success" [value]="75" [striped]="true" [animated]="true" style="width:40%;"><i>50%</i></ngb-progressbar></p>
+          
+        <div style="width:40%; display: flex; margin-left: 3%; margin-top: 3%;">
+          <label>Od</label> 
+          <div class="col-auto">
+            <input type="date" class="form-control mb-2" id="inlineFormInput3" placeholder="Date"> 
+          </div>
+          <label>Do</label> 
+          <div class="col-auto">
+            <input type="date" class="form-control mb-2" id="inlineFormInput3"  placeholder="Date"> 
+          </div>
   
-</ul>
-
-<div [ngbNavOutlet]="nav" class="mt-2"></div>
-
+        </div>
+       
+  
+      </ng-template>
+    </li>
+    
+  </ul>
+  
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+  
+  </div>
+  
 </div>
+

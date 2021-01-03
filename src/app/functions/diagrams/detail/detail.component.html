@@ -1,0 +1,27 @@
+<div class="content">
+        
+    <div class="col">
+        <p id="h2">Your outgoings for this period</p>
+            
+            <table class="table table-striped" style="width: 70%; margin: 0 auto; margin-top: 5%; text-align: center;">
+                <thead>
+                  <tr>
+                    <th scope="col">Category</th>
+                    <th scope="col">Outgoings</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let e of lisDiagDetails;  index as i">
+                    <td>{{e.name}}/td>
+                    <td>{{e.totalPrice}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams/detail',budgetId, 'category-detail', e.id]">Details</button>
+                    </td>
+                  </tr>
+                </tbody>
+                <button style="float: right;" type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams']">Back</button>
+
+              </table>
+
+    </div>
+</div>

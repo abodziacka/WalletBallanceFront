@@ -27,6 +27,8 @@ import { BillDetailComponent } from './functions/my-bills/bill-detail/bill-detai
 import { EditBillComponent } from './functions/my-bills/edit-bill/edit-bill.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CategoriesComponent } from './functions/categories/categories.component';
+import { DetailComponent } from './functions/diagrams/detail/detail.component';
+import { CategoryDetailComponent } from './functions/diagrams/detail/category-detail/category-detail.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { CategoriesComponent } from './functions/categories/categories.component
     MyAccountComponent,
     BillDetailComponent,
     EditBillComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    DetailComponent,
+    CategoryDetailComponent
   ],
   imports: [
     BrowserModule,

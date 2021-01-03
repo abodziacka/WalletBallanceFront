@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { Bill } from '../bill';
 import { environment } from 'src/environments/environment.prod';
 import { Category } from '../Category';
+import { Budget } from '../budget';
 
 @Injectable({
   providedIn: 'root'
@@ -89,6 +90,34 @@ export class UserService {
 
   deleteBill(id: number): Observable<any>{
     return this.http.delete(this.BaseURI+'/functions/delete-bill-by-id?billId='+id, this.httpOptions);
+  }
+
+  addBudget(budget: Budget) {
+    return this.http.post(this.BaseURI + '/functions/add-budget', budget);
+  }
+
+  getBudgets(): Observable<any>{
+    return this.http.get(this.BaseURI + '/functions/get-budgets');
+  }
+
+  deleteBudget(id: number): Observable<any>{
+    return this.http.delete(this.BaseURI+'/functions/delete-budget-by-id?budgetId='+id, this.httpOptions);
+  }
+
+  getStatistics(): Observable<any>{
+    return this.http.get(this.BaseURI + '/functions/get-budgetStatistics');
+  }
+
+  getDiagramDetails(id: string): Observable<any>{
+    return this.http.get(this.BaseURI + '/functions/get-diagramDetails?budgetId='+id);
+  }
+
+  getDiagramCatDetails(id: string, categoryId: string): Observable<any>{
+    return this.http.get(this.BaseURI + '/functions/get-diagramDetails-categorydetails?budgetId='+id+'&categoryId='+categoryId);
+  }
+
+  getCountBudgetInPeriod(dateFrom: string, dateTo: string): Observable<any>{
+    return this.http.get(this.BaseURI + '/functions/get-count-budget-in-period?dateFrom='+dateFrom+'&dateTo='+dateTo);
   }
 
 }

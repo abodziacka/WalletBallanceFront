@@ -26,7 +26,8 @@
                       <th scope="col">Product</th>
                       <th scope="col">Category</th>
                       <th scope="col">Amount</th>
-                      <th scope="col">Price</th>
+                      <th scope="col">Price for one</th>
+                      <th scope="col">Total Price</th>
 
                     </tr>
                   </thead>
@@ -37,6 +38,7 @@
                       <td>{{getCategoryName(model.categoryId).name}}</td>
                       <td>{{model.amount}}</td>
                       <td>{{model.price}}</td>
+                      <td>{{model.amount! * model.price!}}</td>
 
                     </tr>
                   </tbody>

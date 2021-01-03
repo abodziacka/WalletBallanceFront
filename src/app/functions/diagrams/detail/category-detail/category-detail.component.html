@@ -1,0 +1,27 @@
+<div class="content">
+        
+    <div class="col">
+        <p id="h2">Category Details</p>
+
+            <table class="table table-striped" style="width: 70%; margin: 0 auto; margin-top: 5%; text-align: center;">
+                <thead>
+                  <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Total Price</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let e of lisDiagCatDetails">
+                    <td>{{e.name}}</td>
+                    <td>{{e.amount}}</td>
+                    <td>{{e.totalPrice}}</td>
+
+                  </tr>
+                </tbody>
+                <button style="float: right;" type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams']">Back</button>
+
+              </table>
+    </div>
+</div>

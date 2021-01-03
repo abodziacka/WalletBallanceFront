@@ -17,7 +17,7 @@
         <tbody>
           <tr *ngFor="let e of lis; index as i;">
             <th scope="row">{{ e.id }}</th>
-            <td>{{ e.date}}</td>
+            <td>{{ e.date | slice:0:10}}</td>
             <td>{{ e.shop }}</td>
             <td>{{ e.city }}</td>
             <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills/bill-detail', e.id]" >Details</button>
@@ -60,7 +60,7 @@
         </tbody>
       </table>
 
-      <button type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/add-bill']">Add new bill</button>
+      <button type="submit" class="btn btn-primary mb-2" style="float: right;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/add-bill']">Add new bill</button>
 
       
 </div>

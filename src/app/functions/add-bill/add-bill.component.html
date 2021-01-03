@@ -73,7 +73,8 @@
                         <th scope="col">Product</th>
                         <th scope="col">Category</th>
                         <th scope="col">Amount</th>
-                        <th scope="col">Price</th>
+                        <th scope="col">Price for one</th>
+                        <th scope="col">Total Price</th>
                         <th scope="col"></th>
 
                       </tr>
@@ -85,6 +86,7 @@
                         <td>{{getCategoryName(model.categoryId).name}}</td>
                         <td>{{model.amount}}</td>
                         <td>{{model.price}}</td>
+                        <td>{{model.amount! * model.price!}}</td>
                         <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="delete()">Delete</button></td>
 
                       </tr>
