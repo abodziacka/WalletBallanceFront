@@ -6,11 +6,11 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a> -->
-        <a class="nav-item nav-link" (click)="onClickScroll('about')" href="#about">About us</a>
-        <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']" *ngIf="hide()">My account</a>
-        <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/user/login']" *ngIf="!hide()">Login</a>
-        <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/user/registration']" *ngIf="!hide()">Register</a>
-        <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()" *ngIf="hide()">Logout</button>
+        <a class="nav-item nav-link" (click)="onClickScroll('about')" href="#about">O nas</a>
+        <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']" *ngIf="hide()">Moje konto</a>
+        <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/user/login']" *ngIf="!hide()">Zaloguj się</a>
+        <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/user/registration']" *ngIf="!hide()">Zarejestruj się</a>
+        <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()" *ngIf="hide()">Wyloguj </button>
 
 
       </div>

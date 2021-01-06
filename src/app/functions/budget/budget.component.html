@@ -17,7 +17,7 @@
                 </div>
         
               </div>
-              <button class="btn btn-lg btn-outline-primary" (click)="addNewBudget()">Add new</button>
+              <button class="btn btn-lg btn-outline-primary" (click)="addNewBudget()">Dodaj</button>
               
         
             </form>
@@ -34,8 +34,8 @@
                       <tr *ngFor="let e of lis">
                         <td>{{e.fromDate | slice:0:10}}</td>
                         <td>{{e.toDate | slice:0:10}}</td>
-                        <td>{{e.quantity}}</td>
-                        <td><button class="btn btn-lg btn-outline-primary" (click)="delete(e.id)">Delete</button></td>
+                        <td>{{e.quantity }}</td>
+                        <td><button class="btn btn-lg btn-outline-primary" (click)="delete(e.id)">Usuń</button></td>
 
                       </tr>
                     </tbody>

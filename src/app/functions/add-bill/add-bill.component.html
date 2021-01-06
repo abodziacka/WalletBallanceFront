@@ -12,20 +12,20 @@
     </div>
         
         <div class="col">
-            <p id="h2">Enter the data from the bill</p>
+            <p id="h2">Wprowadź dane z paragonu</p>
             <form [formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
                 <div class="one">
                     <div class="form-row align-items-center">
                         <div class="col-auto">
-                          <input type="text" class="form-control mb-2" id="inlineFormInput1"  formControlName="firstCtrlShop" placeholder="Shop"  [(ngModel)]="bill.shop">
+                          <input type="text" class="form-control mb-2" id="inlineFormInput1"  formControlName="firstCtrlShop" placeholder="Sklep"  [(ngModel)]="bill.shop">
                         </div>
                         <div class="col-auto">
-                          <input type="text" class="form-control mb-2" id="inlineFormInput2"  formControlName="firstCtrlCity" placeholder="City" [(ngModel)]="bill.city">
+                          <input type="text" class="form-control mb-2" id="inlineFormInput2"  formControlName="firstCtrlCity" placeholder="Miejscowość" [(ngModel)]="bill.city">
                         </div>
                         <div class="col-auto">
                           <input type="date" class="form-control mb-2" id="inlineFormInput3"  formControlName="firstCtrlDate" placeholder="Date" [(ngModel)]="bill.date"> 
                         </div>
-                        <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="newBill()">Save all</button>
+                        <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="newBill()">Zapisz paragon</button>
 
                     </div>
                 </div>
@@ -37,10 +37,10 @@
                     <div class="form-row align-items-center">
                         <div class="col-auto">
                           <label class="sr-only" for="inlineFormInput">Name</label>
-                          <input type="text" class="form-control mb-2" formControlName="secondCtrlName" [(ngModel)]="model.name" id="inlineFormInput" placeholder="Product">
+                          <input type="text" class="form-control mb-2" formControlName="secondCtrlName" [(ngModel)]="model.name" id="inlineFormInput" placeholder="Produkt">
                         </div>
                         <div class="col-auto">
-                          <select class="form-control mb-2" required formControlName="secondCtrlCategory" [(ngModel)]="model.categoryId" id="inlineFormInput" placeholder="Category" name="category">
+                          <select class="form-control mb-2" required formControlName="secondCtrlCategory" [(ngModel)]="model.categoryId" id="inlineFormInput" placeholder="Kategoria" name="category">
                             <option *ngFor="let e of lis" [value]="e.id">{{e.name}}</option>
 
                           </select>
@@ -53,15 +53,15 @@
                           
                           <div class="col-auto">
                             <label class="sr-only" for="inlineFormInput">Name</label>
-                            <input type="number" class="form-control mb-2" formControlName="secondCtrlAmount" [(ngModel)]="model.amount" id="inlineFormInput" placeholder="Amount">
+                            <input type="number" class="form-control mb-2" formControlName="secondCtrlAmount" [(ngModel)]="model.amount" id="inlineFormInput" placeholder="Ilość">
                           </div>
                           <div class="col-auto">
                             <label class="sr-only" for="inlineFormInput">Name</label>
-                            <input type="number" class="form-control mb-2" formControlName="secondCtrlPrice" [(ngModel)]="model.price" id="inlineFormInput" placeholder="Price">
+                            <input type="number" class="form-control mb-2" formControlName="secondCtrlPrice" [(ngModel)]="model.price" id="inlineFormInput" placeholder="Cena jednostkowa">
                           </div>
                        
                         <div class="col-auto">
-                          <button type="submit" class="btn btn-primary mb-2" (click)="newProduct()">Add</button>
+                          <button type="submit" class="btn btn-primary mb-2" (click)="newProduct()">Dodaj produkt</button>
                         </div>
                     </div>
                 </div>
@@ -70,11 +70,11 @@
                     <thead>
                       <tr>
                         <th scope="col"></th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Price for one</th>
-                        <th scope="col">Total Price</th>
+                        <th scope="col">Produkt</th>
+                        <th scope="col">Kategoria</th>
+                        <th scope="col">Ilość</th>
+                        <th scope="col">Cena jednostkowa</th>
+                        <th scope="col">Cena</th>
                         <th scope="col"></th>
 
                       </tr>
@@ -84,10 +84,10 @@
                         <th scope="row"></th>
                         <td>{{model.name}}</td>
                         <td>{{getCategoryName(model.categoryId).name}}</td>
-                        <td>{{model.amount}}</td>
-                        <td>{{model.price}}</td>
-                        <td>{{model.amount! * model.price!}}</td>
-                        <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="delete()">Delete</button></td>
+                        <td>{{model.amount | number : '1.0-2'}}</td>
+                        <td>{{model.price | number : '1.0-2'}}</td>
+                        <td>{{model.amount! * model.price! | number : '1.0-2'}}</td>
+                        <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="delete()">Usuń</button></td>
 
                       </tr>
                     </tbody>

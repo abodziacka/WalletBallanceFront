@@ -1,83 +1,109 @@
 
+
 <div class="content">
-  <div style="width:80%; margin-left: 10%; margin-top: 3%;"> 
   
-    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
-    <li [ngbNavItem]="1">
-      <a ngbNavLink>History</a>
-      <ng-template ngbNavContent>
-        <div style=" margin-left: 3%; margin-top: 3%;">
-          
+
+    <div style="margin-left: 3%; margin-top: 3%;"> 
   
-          <div style="width:40%; display: flex; margin-left: 3%; margin-top: 3%;">
-            <label>Od</label> 
-            <div class="col-auto">
-              <input type="date" class="form-control mb-2" id="inlineFormInput3" placeholder="Date"> 
-            </div>
-            <label>Do</label> 
-            <div class="col-auto">
-              <input type="date" class="form-control mb-2" id="inlineFormInput3"  placeholder="Date"> 
-            </div>
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="1">
+        <a ngbNavLink>Historia</a>
+        <ng-template ngbNavContent>
+            <ngx-charts-line-chart
+              [scheme]="colorScheme"
+              [legend]="legend"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxis]="xAxis"
+              [yAxis]="yAxis"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [timeline]="timeline"
+              [results]="chart"
+              >
+              </ngx-charts-line-chart>
+
+              <form [formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
+                <div style="width:40%; display: flex; margin-left: 3%; margin-top: 3%;">
+                  <label>Od</label> 
+                  <div class="col-auto">
+                    <input type="date" class="form-control mb-2" id="formFilterDateFrom" placeholder="Date"  formControlName="ctrlDateFrom" [(ngModel)]="rangeDate.dateFrom"> 
+                  </div>
+                  <label>Do</label> 
+                  <div class="col-auto">
+                    <input type="date" class="form-control mb-2" id="formFilterDateTo" placeholder="Date"   formControlName="ctrlDateTo" [(ngModel)]="rangeDate.dateTo"> 
+                  </div>
+                </div>
+              </form>
     
-          </div>
-  
-          <table class="table table-striped" style="margin-top: 5%;">
-            <thead>
-              <tr>
-                <th scope="col">From Date</th>
-                <th scope="col">To Date</th>
-                <th scope="col">Your budget</th>
-                <th scope="col">Spent Amount</th>
-                <th scope="col">Left</th>
-                <th scope="col"></th>
-  
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let e of lisStatistic; index as i;" >
-                <td>{{e.fromDate | slice:0:10}}</td>
-                <td>{{e.toDate | slice:0:10}}</td>
-                <td>{{e.quantity }}</td>
-                <td>{{e.price}}</td>
-                <td>{{e.saveMoney}}</td>
-                <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams/detail', e.id]">Details</button></td>
-              </tr>
-            </tbody>
-          </table>
-  
-  
-  
-        </div>
-        
-      </ng-template>
-    </li>
-    <li [ngbNavItem]="2">
-      <a ngbNavLink>Bieżący okres</a>
-      <ng-template ngbNavContent>
-        <label>Budżet ogółem</label> 
-          <p><ngb-progressbar type="success" [value]="75" [striped]="true" [animated]="true" style="width:40%;"><i>50%</i></ngb-progressbar></p>
-          
-        <div style="width:40%; display: flex; margin-left: 3%; margin-top: 3%;">
-          <label>Od</label> 
-          <div class="col-auto">
-            <input type="date" class="form-control mb-2" id="inlineFormInput3" placeholder="Date"> 
-          </div>
-          <label>Do</label> 
-          <div class="col-auto">
-            <input type="date" class="form-control mb-2" id="inlineFormInput3"  placeholder="Date"> 
-          </div>
-  
-        </div>
-       
-  
-      </ng-template>
-    </li>
+            <table class="table table-striped" style="margin-top: 5%;">
+              <thead>
+                <tr>
+                  <th scope="col">Od</th>
+                  <th scope="col">Do</th>
+                  <th scope="col">Budżet</th>
+                  <th scope="col">Wydana kwota</th>
+                  <th scope="col">Pozostała kwota</th>
+                  <th scope="col"></th>
     
-  </ul>
-  
-  <div [ngbNavOutlet]="nav" class="mt-2"></div>
-  
-  </div>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let e of lisStatistic; index as i;" >
+                  <td>{{e.fromDate | slice:0:10}}</td>
+                  <td>{{e.toDate | slice:0:10}}</td>
+                  <td>{{e.quantity }}</td>
+                  <td>{{e.price}}</td>
+                  <td>{{e.saveMoney }}</td>
+                  <td><p><ngb-progressbar type="success" [value]="((e.price!)*100)!/e.quantity!" [striped]="true" [animated]="true" ><i>{{((e.price!)*100)!/e.quantity!}}</i></ngb-progressbar></p></td>
+                  <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams/detail', e.id]">Szczegóły</button></td>
+                </tr>
+              </tbody>
+            </table>
+    
+    
+    
+          
+        </ng-template>
+      </li>
+      <li [ngbNavItem]="2">
+        <a ngbNavLink>Bieżący okres</a>
+        <ng-template ngbNavContent>
+          <label>Wydana kwota</label> 
+            <p><ngb-progressbar type="success" [value]="((lisStatistic[0].price!)*100)!/lisStatistic[0].quantity!" [striped]="true" [animated]="true" ><i>{{((lisStatistic[0].price!)*100)!/lisStatistic[0].quantity!}}</i></ngb-progressbar></p>
+            
+            <table class="table table-striped" style="margin-top: 5%;">
+              <thead>
+                <tr>
+                  <th scope="col">Budżet</th>
+                  <th scope="col">Wydana kwota</th>
+                  <th scope="col">Pozostała kwota</th>
+                  <th scope="col"></th>
+    
+                </tr>
+              </thead>
+              <tbody>
+                <tr  >
+                  <td>{{lisStatistic[0].quantity }}</td>
+                  <td>{{lisStatistic[0].price}}</td>
+                  <td>{{lisStatistic[0].saveMoney}}</td>
+                  <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams/detail', lisStatistic[0].id]">Szczegóły</button></td>
+                </tr>
+              </tbody>
+            </table>
+            
+    
+         
+    
+        </ng-template>
+      </li>
+      
+    </ul>
+    
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    
+    </div>
+ 
   
 </div>
 

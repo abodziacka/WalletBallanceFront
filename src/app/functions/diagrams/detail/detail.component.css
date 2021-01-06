@@ -46,6 +46,10 @@ form{
     margin-top: 6%;
   }
   .content{
-    width: 70%;
-    margin: 0 auto;
+    display: flex;
+
 }  
+.diagram{
+    margin-top: 20%;
+    justify-content: center;
+}

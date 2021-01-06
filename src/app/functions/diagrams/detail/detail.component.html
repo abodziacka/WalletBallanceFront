@@ -1,25 +1,38 @@
 <div class="content">
-        
+        <div class="diagram">
+            <ngx-charts-pie-chart
+            [scheme]="colorScheme"
+            [results]="chart"
+            [gradient]="gradient"
+            [legend]="showLegend"
+            [legendPosition]="legendPosition"
+            [labels]="showLabels"
+            [doughnut]="isDoughnut"
+            >
+          </ngx-charts-pie-chart>
+        </div>
     <div class="col">
-        <p id="h2">Your outgoings for this period</p>
+        <p id="h2">Twoje wydatki w danym okresie</p>
             
             <table class="table table-striped" style="width: 70%; margin: 0 auto; margin-top: 5%; text-align: center;">
                 <thead>
                   <tr>
-                    <th scope="col">Category</th>
-                    <th scope="col">Outgoings</th>
+                    <th scope="col">Kategoria</th>
+                    <th scope="col">Wydana kwota</th>
+                    <th scope="col"></th>
+
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let e of lisDiagDetails;  index as i">
-                    <td>{{e.name}}/td>
+                    <td>{{e.name}}</td>
                     <td>{{e.totalPrice}}</td>
                     <td>
-                        <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams/detail',budgetId, 'category-detail', e.id]">Details</button>
+                        <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams/detail',budgetId, 'category-detail', e.id]">Szczegóły</button>
                     </td>
                   </tr>
                 </tbody>
-                <button style="float: right;" type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams']">Back</button>
+                <button style="float: right;" type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams']">Powrót</button>
 
               </table>
 

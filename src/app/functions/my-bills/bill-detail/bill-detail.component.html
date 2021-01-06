@@ -1,15 +1,15 @@
 <div class="addbill">
       
       <div class="col">
-          <p id="h2">Bill Details</p>
+          <p id="h2">Szczegóły paragonu</p>
           <form [formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
               <div class="one">
                   <div class="form-row align-items-center">
                       <div class="col-auto">
-                        <input type="text" class="form-control mb-2" id="inlineFormInput1"  formControlName="firstCtrlShop" placeholder="Shop"  [(ngModel)]="bill.shop" readonly>
+                        <input type="text" class="form-control mb-2" id="inlineFormInput1"  formControlName="firstCtrlShop" placeholder="Sklep"  [(ngModel)]="bill.shop" readonly>
                       </div>
                       <div class="col-auto">
-                        <input type="text" class="form-control mb-2" id="inlineFormInput2"  formControlName="firstCtrlCity" placeholder="City" [(ngModel)]="bill.city" readonly>
+                        <input type="text" class="form-control mb-2" id="inlineFormInput2"  formControlName="firstCtrlCity" placeholder="Miejscowość" [(ngModel)]="bill.city" readonly>
                       </div>
                       <div class="col-auto">
                         <input type="date" class="form-control mb-2" id="inlineFormInput3"  formControlName="firstCtrlDate" placeholder="Date" [(ngModel)]="bill.date" readonly> 
@@ -19,31 +19,31 @@
               </div>
             </form>
 
-              <table class="table table-striped" >
+              <table class="table table-striped" style="text-align: center;">
                   <thead>
                     <tr>
                       <th scope="col"></th>
-                      <th scope="col">Product</th>
-                      <th scope="col">Category</th>
-                      <th scope="col">Amount</th>
-                      <th scope="col">Price for one</th>
-                      <th scope="col">Total Price</th>
+                      <th scope="col">Produkt</th>
+                      <th scope="col">Kategoria</th>
+                      <th scope="col">Ilość</th>
+                      <th scope="col">Cena jednostkowa</th>
+                      <th scope="col">Cena</th>
 
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody >
                     <tr *ngFor="let model of Products">
                       <th scope="row"></th>
                       <td>{{model.name}}</td>
                       <td>{{getCategoryName(model.categoryId).name}}</td>
-                      <td>{{model.amount}}</td>
-                      <td>{{model.price}}</td>
-                      <td>{{model.amount! * model.price!}}</td>
+                      <td>{{model.amount | number : '1.0-2'}}</td>
+                      <td>{{model.price | number : '1.0-2'}}</td>
+                      <td>{{model.amount! * model.price! | number : '1.0-2'}}</td>
 
                     </tr>
                   </tbody>
                 </table>
-      <button type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']">Back</button>
+      <button type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']">Powrót</button>
 
       </div>
 </div>

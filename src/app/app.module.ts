@@ -29,6 +29,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CategoriesComponent } from './functions/categories/categories.component';
 import { DetailComponent } from './functions/diagrams/detail/detail.component';
 import { CategoryDetailComponent } from './functions/diagrams/detail/category-detail/category-detail.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { CategoryDetailComponent } from './functions/diagrams/detail/category-de
     }),
     FormsModule,
     CommonModule,
-    NgbModule
+    NgbModule,
+    NgxChartsModule
     
   ],
   providers: [UserService,{

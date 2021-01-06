@@ -2,15 +2,15 @@
        
        
        
-       <p id="h2">My bills</p>
+       <p id="h2">Moje paragony</p>
 <div class="content">
     <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col"></th>
-            <th scope="col">Date</th>
-            <th scope="col">Shop</th>
-            <th scope="col">City</th>
+            <th scope="col">Data</th>
+            <th scope="col">Sklep</th>
+            <th scope="col">Miejscowość</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -20,9 +20,9 @@
             <td>{{ e.date | slice:0:10}}</td>
             <td>{{ e.shop }}</td>
             <td>{{ e.city }}</td>
-            <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills/bill-detail', e.id]" >Details</button>
-              <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills/edit-bill', e.id]" >Edit</button>
-              <button type="submit" class="btn btn-primary mb-2"  (click)="open(content)">Delete</button></td>
+            <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills/bill-detail', e.id]" >Szczegóły</button>
+              <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills/edit-bill', e.id]" >Edycja</button>
+              <button type="submit" class="btn btn-primary mb-2"  (click)="open(content)">Usuń</button></td>
 
 
               
@@ -36,17 +36,17 @@
                         <form>
                           <div class="row">    
                             <div class="col-md-12">    
-                                <p class="text-center confirm-message">Are you sure you want to delete this bill?</p>    
+                                <p class="text-center confirm-message">Jesteś pewny, że chcesz usunąć paragon?</p>    
                             </div>    
                         </div> 
                           <div class="row">    
                             <div class="col-md-12">    
                                 <p class="confirm-button">    
                                     <a class="mr-2" >    
-                                        <button class="btn btn-yes" (click)="delete(e.id); modal.close()">Yes</button>    
+                                        <button class="btn btn-yes" (click)="delete(e.id); modal.close()">Tak</button>    
                                     </a>    
                                     <a >    
-                                        <button class="btn btn-no" (click)="modal.close('Save click')">No</button>    
+                                        <button class="btn btn-no" (click)="modal.close('Save click')">Nie</button>    
                                     </a>    
                                 </p>    
                             </div>    
@@ -60,7 +60,7 @@
         </tbody>
       </table>
 
-      <button type="submit" class="btn btn-primary mb-2" style="float: right;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/add-bill']">Add new bill</button>
+      <button type="submit" class="btn btn-primary mb-2" style="float: right;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/add-bill']">Dodaj nowy paragon</button>
 
       
 </div>

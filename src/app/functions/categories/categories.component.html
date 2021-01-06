@@ -1,7 +1,7 @@
 <div class="content">
         
         <div class="col">
-            <p id="h2">Your categories</p>
+            <p id="h2">Twoje kategorie</p>
                 
             <form style="margin: 0 auto;"[formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
 
@@ -9,14 +9,14 @@
                     <div class="form-row align-items-center">
                         
                           <div class="col-auto">
-                            <input type="text" class="form-control mb-2"id="inlineFormInput1"  formControlName="firstCtrlName" placeholder="Category"  [(ngModel)]="category.name">
+                            <input type="text" class="form-control mb-2"id="inlineFormInput1"  formControlName="firstCtrlName" placeholder="Kategoria"  [(ngModel)]="category.name">
                           </div>
                           <div class="col-auto">
-                            <input type="text" class="form-control mb-2" id="inlineFormInput" formControlName="firstCtrlDesc" placeholder="Description"  [(ngModel)]="category.description">
+                            <input type="text" class="form-control mb-2" id="inlineFormInput" formControlName="firstCtrlDesc" placeholder="Opis"  [(ngModel)]="category.description">
                           </div>
                        
                         <div class="col-auto">
-                          <button type="submit" class="btn btn-primary mb-2" (click)="addNewCategory()">Add</button>
+                          <button type="submit" class="btn btn-primary mb-2" (click)="addNewCategory()">Dodaj</button>
                         </div>
                     </div>
                 </div>
@@ -24,8 +24,8 @@
                 <table class="table table-striped" style="width: 70%; margin: 0 auto; margin-top: 5%; text-align: center;">
                     <thead>
                       <tr>
-                        <th scope="col">Category</th>
-                        <th scope="col">Description</th>
+                        <th scope="col">Kategoria</th>
+                        <th scope="col">Opis</th>
 
 
                       </tr>
