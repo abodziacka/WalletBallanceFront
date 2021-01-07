@@ -1,9 +1,9 @@
-<div class="content">
+<div class="row justify-content-md-center ">
         
     <div class="col">
         <p id="h2">Dane kategorii</p>
 
-            <table class="table table-striped" style="width: 70%; margin: 0 auto; margin-top: 5%; text-align: center;">
+            <table class="table table-striped" style="width: 50%; margin: 0 auto; margin-top: 4%; text-align: center;">
                 <thead>
                   <tr>
                     <th scope="col">Produkt</th>
@@ -20,8 +20,12 @@
 
                   </tr>
                 </tbody>
-                <button style="float: right;" type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams']">Powrót</button>
+               
 
               </table>
+              <div class="wrapper2" style="margin-top: 5%;">
+                <button type="submit" mdbBtn class="button2"  color="elegant" style="border-radius: 50px; width: 170px;" mdbWavesEffect  [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams']">Powrót</button>
+
+              </div>
     </div>
 </div>

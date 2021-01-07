@@ -5,22 +5,23 @@
     color: #3A2A2A;
     text-shadow: 5px 3px 6px #a19692;
     opacity: 1;
-    margin-top: 3%;
+    margin-top: 5%;
   }
   .content{
       width: 50%;
       margin: 0 auto;
+      margin-top: 3%;
   }    
   td{
       padding: 3px;
   }
   .btn-no {  
-    background-color: #f4516c;  
+    background-color: #aa3347;  
     color:white;  
 }  
   
 .btn-yes {  
-    background-color: #716aca;  
+    background-color: #3e8f49;  
     color:white;  
 }
 .confirm-message {  
@@ -42,3 +43,57 @@
     text-align: center;  
     margin: 15px 0px 15px 0px;  
 }  
+
+.wrapper {
+    display: inline-block;
+    position: relative;
+    margin-top: 5%;
+    margin-left: 45%;
+    transform: translate(-50%, -50%);
+  }
+  .button1{
+      text-decoration: none;
+      text-align: center;
+      color: #ffffff;
+      border: 2px solid #610c2d;
+      background-color: #610c2d;
+      border-radius: 10px;
+      position: relative;
+      width: 200px;
+      line-height: 40px;
+      display: inline-block;
+      font-family: Arial;
+      font-weight: 600;
+      overflow: hidden;
+  }
+  .button1:before {
+      content: "";
+      background-color: #b199a2;
+      height: 100%;
+      width: 40px;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -70px;
+      transform: skewX(-45deg) translateX(0px);
+      transition: none;
+    }
+  .button1:hover{
+      background-color: #610c2d;
+      color: #ffffff;
+      border-bottom: 2px solid #610c2d;
+  }
+  
+  .button1:hover:before{
+      transform: skewX(-45deg) translateX(350px);
+      transition: all 0.4s ease-in;
+  }
+
+  table {
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  

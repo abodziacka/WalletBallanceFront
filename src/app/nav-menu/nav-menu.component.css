@@ -1,0 +1,36 @@
+.button1{
+    text-decoration: none;
+    text-align: center;
+    color: #494446;
+    border: 2px solid #494446;
+    border-radius: 10px;
+    position: relative;
+    width: 100px;
+    line-height: 20px;
+    display: inline-block;
+    font-family: Arial;
+    font-weight: 600;
+    overflow: hidden;
+}
+.button1:before {
+    content: "";
+    background-color: rgba(255,255,255,0.5);
+    height: 100%;
+    width: 40px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -70px;
+    transform: skewX(-45deg) translateX(0px);
+    transition: none;
+  }
+.button1:hover{
+    background-color: #a58893;
+    color: #000000;
+    border-bottom: 2px solid #520825;
+}
+
+.button1:hover:before{
+    transform: skewX(-45deg) translateX(350px);
+    transition: all 0.4s ease-in;
+}

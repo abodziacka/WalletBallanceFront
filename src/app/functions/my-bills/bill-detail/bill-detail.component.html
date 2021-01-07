@@ -18,32 +18,34 @@
                   </div>
               </div>
             </form>
+<div class="two">
+  <table class="table table-striped" style="text-align: center;">
+    <thead>
+      <tr>
+        <th scope="col">Produkt</th>
+        <th scope="col">Kategoria</th>
+        <th scope="col">Ilość</th>
+        <th scope="col">Cena jednostkowa</th>
+        <th scope="col">Cena</th>
 
-              <table class="table table-striped" style="text-align: center;">
-                  <thead>
-                    <tr>
-                      <th scope="col"></th>
-                      <th scope="col">Produkt</th>
-                      <th scope="col">Kategoria</th>
-                      <th scope="col">Ilość</th>
-                      <th scope="col">Cena jednostkowa</th>
-                      <th scope="col">Cena</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let model of Products">
+        <td>{{model.name}}</td>
+        <td>{{getCategoryName(model.categoryId).name}}</td>
+        <td>{{model.amount | number : '1.0-2'}}</td>
+        <td>{{model.price | number : '1.0-2'}}</td>
+        <td>{{model.amount! * model.price! | number : '1.0-2'}}</td>
 
-                    </tr>
-                  </thead>
-                  <tbody >
-                    <tr *ngFor="let model of Products">
-                      <th scope="row"></th>
-                      <td>{{model.name}}</td>
-                      <td>{{getCategoryName(model.categoryId).name}}</td>
-                      <td>{{model.amount | number : '1.0-2'}}</td>
-                      <td>{{model.price | number : '1.0-2'}}</td>
-                      <td>{{model.amount! * model.price! | number : '1.0-2'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+          <div class="wrapper2">
+      <button type="submit" mdbBtn class="button2"  color="elegant"  mdbWavesEffect style="width: 200px; margin:0 auto;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']">Powrót</button>
 
-                    </tr>
-                  </tbody>
-                </table>
-      <button type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']">Powrót</button>
+          </div>   
 
       </div>
 </div>

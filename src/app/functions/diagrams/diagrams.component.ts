@@ -40,8 +40,8 @@ export class DiagramsComponent implements OnInit {
     var nowDate =new Date().toDateString();
     console.log(nowDate);
   }
-  
   // options
+  // view: Number[] = [1200, 300];
   legend: boolean = true;
   showLabels: boolean = true;
   animations: boolean = true;
@@ -49,8 +49,8 @@ export class DiagramsComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Year';
-  yAxisLabel: string = 'Money';
+  xAxisLabel: string = 'Okres';
+  yAxisLabel: string = 'PLN';
   timeline: boolean = true;
 
   colorScheme = {
@@ -107,7 +107,7 @@ export class DiagramsComponent implements OnInit {
         }
         this.chart.push({ name: "Budżet", series: budgetList});
         this.chart.push({ name: "Wydatki", series: budgetSpendList});
-        this.chart.push({ name: "Resultat", series: budgetSaveList});
+        this.chart.push({ name: "Rezultat", series: budgetSaveList});
         this.chart = [...this.chart];
         console.log(this.chart);
       }

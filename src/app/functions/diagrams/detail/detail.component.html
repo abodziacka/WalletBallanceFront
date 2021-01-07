@@ -1,4 +1,49 @@
-<div class="content">
+<div class="row justify-content-md-center ">
+  <div class="col-md-4" >
+    <ngx-charts-pie-chart
+    [scheme]="colorScheme"
+    [results]="chart"
+    [gradient]="gradient"
+    [legend]="showLegend"
+    [legendPosition]="legendPosition"
+    [labels]="showLabels"
+    [doughnut]="isDoughnut"
+    >
+  </ngx-charts-pie-chart>
+  </div>
+  <div class="col-md-8">
+    <p id="h2">Twoje wydatki w danym okresie</p>
+            
+    <table class="table table-striped" style="width: 9 0%; margin: 0 auto; margin-top: 5%; text-align: center;">
+        <thead>
+          <tr>
+            <th scope="col">Kategoria</th>
+            <th scope="col">Wydana kwota</th>
+            <th scope="col"></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let e of lisDiagDetails;  index as i">
+            <td>{{e.name}}</td>
+            <td>{{e.totalPrice}}</td>
+            <td>
+                <button type="submit" mdbBtn   color="blue-grey" style="border-radius: 50px;" mdbWavesEffect [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams/detail',budgetId, 'category-detail', e.id]">Szczegóły</button>
+            </td>
+          </tr>
+        </tbody>
+       
+
+      </table>
+      <div class="wrapper2" style="margin-top: 5%;">
+        <button type="submit" mdbBtn  class="button2" color="elegant" style="border-radius: 50px; width: 150px;" mdbWavesEffect [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams']">Powrót</button>
+
+      </div>
+  </div>
+</div>
+
+
+<!-- <div class="content">
         <div class="diagram">
             <ngx-charts-pie-chart
             [scheme]="colorScheme"
@@ -28,13 +73,17 @@
                     <td>{{e.name}}</td>
                     <td>{{e.totalPrice}}</td>
                     <td>
-                        <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams/detail',budgetId, 'category-detail', e.id]">Szczegóły</button>
+                        <button type="submit" mdbBtn   color="blue-grey" style="border-radius: 50px;" mdbWavesEffect style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams/detail',budgetId, 'category-detail', e.id]">Szczegóły</button>
                     </td>
                   </tr>
                 </tbody>
-                <button style="float: right;" type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams']">Powrót</button>
+               
 
               </table>
+              <div class="wrapper2" style="margin-top: 5%;">
+                <button type="submit" mdbBtn   color="elegant" style="border-radius: 50px;" mdbWavesEffect style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams']">Powrót</button>
+
+              </div>
 
     </div>
-</div>
+</div> -->

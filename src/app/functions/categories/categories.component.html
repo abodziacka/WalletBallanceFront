@@ -6,7 +6,7 @@
             <form style="margin: 0 auto;"[formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
 
                 <div class="two" style="margin-left: 5%;">
-                    <div class="form-row align-items-center">
+                    <div class="d-flex justify-content-center" style="margin: 0 auto;">
                         
                           <div class="col-auto">
                             <input type="text" class="form-control mb-2"id="inlineFormInput1"  formControlName="firstCtrlName" placeholder="Kategoria"  [(ngModel)]="category.name">
@@ -15,9 +15,9 @@
                             <input type="text" class="form-control mb-2" id="inlineFormInput" formControlName="firstCtrlDesc" placeholder="Opis"  [(ngModel)]="category.description">
                           </div>
                        
-                        <div class="col-auto">
-                          <button type="submit" class="btn btn-primary mb-2" (click)="addNewCategory()">Dodaj</button>
-                        </div>
+                          <div class="col-auto">
+                            <button type="submit"mdbBtn type="button" class="button2" color="unique" style="border-radius: 50px; width: 150px;" mdbWavesEffect (click)="addNewCategory()">Dodaj</button>
+                          </div>
                     </div>
                 </div>
 

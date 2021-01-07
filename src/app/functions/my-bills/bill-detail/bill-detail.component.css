@@ -2,6 +2,7 @@
     display: flex;
     width: 50%;
     margin: 0 auto;
+    margin-top: 5%;
 }
 .photo{
     margin-top: 20%;
@@ -30,7 +31,7 @@ form{
     margin-top: 5%;
 }
 .two{
-    margin-top: 10%;
+    margin-top: 5%;
 }
 .table{
     margin-top: 5%;

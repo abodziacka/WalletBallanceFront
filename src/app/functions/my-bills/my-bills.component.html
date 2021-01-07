@@ -1,10 +1,12 @@
+<p id="h2">Moje paragony</p>
 
-       
-       
-       
-       <p id="h2">Moje paragony</p>
+
+
+<!-- Copyright 2020 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
 <div class="content">
-    <table class="table table-striped">
+    <table class="table table-striped" style="text-align: center;">
         <thead>
           <tr>
             <th scope="col"></th>
@@ -16,13 +18,13 @@
         </thead>
         <tbody>
           <tr *ngFor="let e of lis; index as i;">
-            <th scope="row">{{ e.id }}</th>
+            <th scope="row"></th>
             <td>{{ e.date | slice:0:10}}</td>
             <td>{{ e.shop }}</td>
             <td>{{ e.city }}</td>
-            <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills/bill-detail', e.id]" >Szczegóły</button>
-              <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills/edit-bill', e.id]" >Edycja</button>
-              <button type="submit" class="btn btn-primary mb-2"  (click)="open(content)">Usuń</button></td>
+            <td><button type="submit" mdbBtn  color="blue-grey" style="border-radius: 50px;" mdbWavesEffect style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills/bill-detail', e.id]" >Szczegóły</button>
+              <button type="submit" mdbBtn   color="blue-grey" style="border-radius: 20px;" mdbWavesEffect style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills/edit-bill', e.id]" >Edycja</button>
+              <button type="submit" mdbBtn   color="blue-grey" style="border-radius: 50px;" mdbWavesEffect style="margin: 4px;" (click)="open(content)">Usuń</button></td>
 
 
               
@@ -58,9 +60,9 @@
        
           </tr>
         </tbody>
-      </table>
+  </table>  
+  <div class="wrapper2">
+    <button type="submit" mdbBtn type="button" class="button2" color="unique" style="border-radius: 20px; width: 250px;" mdbWavesEffect  [routerLinkActive]="['link-active']" [routerLink]="['/functions/add-bill']">Dodaj nowy paragon</button>  
 
-      <button type="submit" class="btn btn-primary mb-2" style="float: right;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/add-bill']">Dodaj nowy paragon</button>
-
-      
+  </div>
 </div>

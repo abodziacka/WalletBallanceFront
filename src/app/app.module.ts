@@ -30,7 +30,9 @@ import { CategoriesComponent } from './functions/categories/categories.component
 import { DetailComponent } from './functions/diagrams/detail/detail.component';
 import { CategoryDetailComponent } from './functions/diagrams/detail/category-detail/category-detail.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
+import { MatTableModule } from '@angular/material/table';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +51,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     EditBillComponent,
     CategoriesComponent,
     DetailComponent,
-    CategoryDetailComponent
+    CategoryDetailComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -63,9 +66,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     FormsModule,
     CommonModule,
     NgbModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatTableModule,
+    MDBBootstrapModule.forRoot(), 
     
   ],
+  schemas: [NO_ERRORS_SCHEMA],
   providers: [UserService,{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

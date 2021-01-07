@@ -47,9 +47,11 @@ form{
   }
   .content{
     display: flex;
+    
 
 }  
 .diagram{
-    margin-top: 20%;
+    margin-top: 10%;
     justify-content: center;
+    
 }

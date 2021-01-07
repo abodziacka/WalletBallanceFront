@@ -1,45 +1,53 @@
 
 
             <div class="content">
-            <p id="h2">Budżet</p>
-            <form [formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
-              
-              <div style="display: flex; width: 80%; ">
-                <label>Budżet Ogółem</label> 
-                <input type="text" class="form-control mb-2"  id="inlineFormInput"  formControlName="firstCtrlQuantity" placeholder="Budżet Ogółem"  [(ngModel)]="budget.quantity">
-                <label>Od</label> 
-                <div class="col-auto">
-                  <input type="date" class="form-control mb-2" id="inlineFormInput3"  formControlName="firstCtrlFromDate" placeholder="Date"  [(ngModel)]="budget.fromDate"> 
-                </div>
-                <label>Do</label> 
-                <div class="col-auto">
-                  <input type="date" class="form-control mb-2" id="inlineFormInput3"  formControlName="firstCtrlToDate" placeholder="Date"  [(ngModel)]="budget.toDate"> 
-                </div>
-        
+              <div class="col">
+                <p id="h2">Budżet</p>
+                <form [formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
+                  
+                  <div  class="form-row align-items-center" style="margin-top: 5%;">
+                    
+                    <div class="col-auto">
+                    <input type="text" class="form-control mb-2"  id="inlineFormInput"  formControlName="firstCtrlQuantity" placeholder="Budżet Ogółem"  [(ngModel)]="budget.quantity">
+                    </div>
+                    <div class="form-row align-items-center" style="margin-left: 3%;"> 
+                      <label>Od</label> 
+                      <div class="col-auto">
+                        <input type="date" class="form-control mb-2" id="inlineFormInput3"  formControlName="firstCtrlFromDate" placeholder="Date"  [(ngModel)]="budget.fromDate"> 
+                      </div>
+                      <label>Do</label> 
+                      <div class="col-auto">
+                        <input type="date" class="form-control mb-2" id="inlineFormInput3"  formControlName="firstCtrlToDate" placeholder="Date"  [(ngModel)]="budget.toDate"> 
+                      </div>
+                    </div>
+                    
+                    <button mdbBtn type="button" class="button2" color="unique" style="border-radius: 50px; margin-left: 3%; width: 150px;" mdbWavesEffect (click)="addNewBudget()">Dodaj</button>
+            
+                  </div>
+                  
+            
+                </form>
+                    <table class="table table-striped" style="margin-top: 5%;">
+                        <thead>
+                          <tr>
+                            <th scope="col">Od</th>
+                            <th scope="col">Do</th>
+                            <th scope="col">Budżet</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let e of lis">
+                            <td>{{e.fromDate | slice:0:10}}</td>
+                            <td>{{e.toDate | slice:0:10}}</td>
+                            <td>{{e.quantity }}</td>
+                            <td><button type="submit" mdbBtn   color="blue-grey" style="border-radius: 50px;" mdbWavesEffect style="margin: 4px;" (click)="delete(e.id)">Usuń</button></td>
+    
+                          </tr>
+                        </tbody>
+                      </table>
               </div>
-              <button class="btn btn-lg btn-outline-primary" (click)="addNewBudget()">Dodaj</button>
-              
-        
-            </form>
-                <table class="table table-striped" style="margin-top: 5%; width: 70%;">
-                    <thead>
-                      <tr>
-                        <th scope="col">Od</th>
-                        <th scope="col">Do</th>
-                        <th scope="col">Budżet</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let e of lis">
-                        <td>{{e.fromDate | slice:0:10}}</td>
-                        <td>{{e.toDate | slice:0:10}}</td>
-                        <td>{{e.quantity }}</td>
-                        <td><button class="btn btn-lg btn-outline-primary" (click)="delete(e.id)">Usuń</button></td>
-
-                      </tr>
-                    </tbody>
-                  </table>
+            
             
             </div>
             

@@ -1,10 +1,8 @@
 
   .content{
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
-    margin-top: 5%;
     text-align: center;
-    justify-content: center;
 }  
 .button{
     margin: 0 auto;
@@ -20,5 +18,12 @@ td{
     color: #3A2A2A;
     text-shadow: 5px 3px 6px #a19692;
     opacity: 1;
-    margin-top: 2%;
+    margin-top: 7%;
   }
+  input[type="text"]{
+    width: 250px;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    padding: 0 auto;
+}

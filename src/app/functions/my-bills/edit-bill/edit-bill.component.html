@@ -1,5 +1,5 @@
 <div class="addbill">
-    <div class="photo">
+    <!-- <div class="photo">
         <div class="col-4`">
             <div class="input-group mb-3">
                 <div class="custom-file">
@@ -9,7 +9,7 @@
               </div>
               
         </div>
-    </div>
+    </div> -->
         
         <div class="col">
             <p id="h2">Wprowadź dane z paragonu</p>
@@ -25,7 +25,7 @@
                         <div class="col-auto">
                           <input type="date" class="form-control mb-2" id="inlineFormInput3"  formControlName="firstCtrlDate" placeholder="Date" [(ngModel)]="bill.date"> 
                         </div>
-                        <button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="save()">Zapisz paragon</button>
+                        <button type="submit" class="button2" mdbBtn  color="elegant" style="border-radius: 20px;" mdbWavesEffect style="margin: 4px;" (click)="save()">Zapisz zmiany</button>
 
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                           </div>
                        
                         <div class="col-auto">
-                          <button type="submit" class="btn btn-primary mb-2" (click)="newProduct()">Dodaj produkt</button>
+                          <button  mdbBtn type="button" class="button2" color="unique" style="border-radius: 20px;" mdbWavesEffect style="border-radius: 20px;"  (click)="newProduct()">Dodaj produkt</button>
                         </div>
                     </div>
                 </div>
@@ -88,12 +88,12 @@
                         <td>{{model.amount | number : '1.0-2'}}</td>
                         <td>{{model.price | number : '1.0-2'}}</td>
                         <td>{{model.amount! * model.price! | number : '1.0-2'}}</td>
-                        <td><button type="submit" class="btn btn-primary mb-2" style="margin: 4px;" (click)="delete(i)">Usuń</button></td>
+                        <td><button type="submit" mdbBtn type="button"  color="mdb-color" style="border-radius: 20px; margin: 4px;" mdbWavesEffect (click)="delete(i)">Usuń</button></td>
 
                       </tr>
                     </tbody>
                   </table>
-      <button type="submit" class="btn btn-primary mb-2" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']">Powrót</button>
+      <button type="submit" mdbBtn type="button" class="button2" color="elegant" style="border-radius: 20px; margin: 4px; width: 150px;" mdbWavesEffect [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']">Powrót</button>
 
                 </form>
 
