@@ -3,9 +3,9 @@ import { Budget } from 'src/app/budget';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/shared/user.service';
-import { Router } from '@angular/router';
 import { Statistics } from 'src/app/statistics';
 import { DatePipe } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +15,7 @@ import { DatePipe } from '@angular/common';
 })
 export class DiagramsComponent implements OnInit {
 
-  constructor(private http:HttpClient, private _formBuilder: FormBuilder,  private service: UserService, private router: Router) { }
+  constructor(private http:HttpClient, private _formBuilder: FormBuilder,  private service: UserService, private router: Router, private activatedRoute: ActivatedRoute) { }
   active = 1;
   readonly BaseURI='http://localhost:55284';
 
@@ -40,8 +40,19 @@ export class DiagramsComponent implements OnInit {
     var nowDate =new Date().toDateString();
     console.log(nowDate);
   }
+
+  filter(){
+    //this.call();
+    //this.router.navigate(['functions/diagrams/'+this.rangeDate.dateFrom+'/'+this.rangeDate.dateTo]);
+    //this.router.navigate(['functions/diagrams'], { queryParams: { dateFrom: this.rangeDate.dateFrom, dateTo: this.rangeDate.dateTo } })
+    this.redirectTo('functions/diagrams/'+this.rangeDate.dateFrom+'/'+this.rangeDate.dateTo);
+  }
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
+ }
   // options
-  // view: Number[] = [1200, 300];
+  view: [number, number]= [1200, 300];
   legend: boolean = true;
   showLabels: boolean = true;
   animations: boolean = true;
@@ -59,17 +70,32 @@ export class DiagramsComponent implements OnInit {
   chart: Array<{ name :string, series :Array<{name:string, value:number}>}> = [];
 
   ngOnInit(): void {
-    var dateFrom = new Date();
-    var dateTo = new Date();
-    dateFrom.setFullYear(dateFrom.getFullYear()-1);
-    this.rangeDate.dateFrom = dateFrom.toISOString().substring(0,10);
-    this.firstFormGroup = this._formBuilder.group({
-      ctrlDateFrom: [dateFrom.toISOString().substring(0,10), Validators.required],
-      ctrlDateTo: [dateTo.toISOString().substring(0,10), Validators.required]
+    var dateFromParam = this.activatedRoute.snapshot.paramMap.get('dateFrom');
+    var dateToParam = this.activatedRoute.snapshot.paramMap.get('dateTo');
+    if (dateFromParam != null && dateToParam!=null){
+      this.rangeDate.dateFrom = dateFromParam;
+      this.rangeDate.dateTo = dateToParam;
+      this.firstFormGroup = this._formBuilder.group({
+        ctrlDateFrom: [dateFromParam, Validators.required],
+        ctrlDateTo: [dateToParam, Validators.required]
+      });
+    } else {
+      var dateFrom = new Date();
+      var dateTo = new Date();
+      dateFrom.setFullYear(dateFrom.getFullYear()-1);
+      this.rangeDate.dateFrom = dateFrom.toISOString().substring(0,10);
+      this.firstFormGroup = this._formBuilder.group({
+        ctrlDateFrom: [dateFrom.toISOString().substring(0,10), Validators.required],
+        ctrlDateTo: [dateTo.toISOString().substring(0,10), Validators.required]
+      });
+    }
+    this.call();
+    this.now();
+  }
 
-    });
-
-    this.http.get(this.BaseURI + '/functions/get-budgetStatistics?dateFrom='+dateFrom.toISOString().substring(0,10)+'&dateTo='+dateTo.toISOString().substring(0,10)) 
+  call(){
+    
+    this.http.get(this.BaseURI + '/functions/get-budgetStatistics?dateFrom='+this.rangeDate.dateFrom+'&dateTo='+this.rangeDate.dateTo) 
     .subscribe(Response => { 
   
       // If response comes hideloader() function is called 
@@ -112,7 +138,5 @@ export class DiagramsComponent implements OnInit {
         console.log(this.chart);
       }
     }); 
-
-    this.now();
   }
 }

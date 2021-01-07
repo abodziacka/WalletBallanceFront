@@ -11,7 +11,7 @@
         <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']" *ngIf="hide()">Moje konto</a>
         <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/user/login']" *ngIf="!hide()">Zaloguj się</a>
         <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/user/registration']" *ngIf="!hide()">Zarejestruj się</a>
-        <button class="button1" (click)="onLogout()" *ngIf="hide()">Wyloguj </button>
+        <button class="button1" (click)="onLogout()" *ngIf="hide()" style="float: right;">Wyloguj </button>
 
 
       </div>

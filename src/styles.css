@@ -38,7 +38,7 @@ html{
     opacity: 1;
 }
 
-.button{
+/* .button{
     top: 819px;
     left: 1142px;
     width: 202px;
@@ -60,7 +60,7 @@ html{
 .button:hover {
     background-color: #ccd2d4;
     color: rgb(34, 29, 29);
-    }
+    } */
     #h0{
       color: white;
     }

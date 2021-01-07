@@ -39,6 +39,7 @@ const routes: Routes = [
       { path: 'add-bill', component: AddBillComponent,canActivate: [AuthGuard] },
       { path: 'diagrams/detail/:id/category-detail/:categoryId', component: CategoryDetailComponent,canActivate: [AuthGuard] },
       { path: 'diagrams/detail/:id', component: DetailComponent,canActivate: [AuthGuard] },
+      { path: 'diagrams/:dateFrom/:dateTo', component: DiagramsComponent,canActivate: [AuthGuard] },
       { path: 'diagrams', component: DiagramsComponent,canActivate: [AuthGuard] },
       { path: 'categories', component: CategoriesComponent,canActivate: [AuthGuard] },
       { path: 'budget', component: BudgetComponent,canActivate: [AuthGuard] },

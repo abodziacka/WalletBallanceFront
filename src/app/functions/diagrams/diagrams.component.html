@@ -8,6 +8,7 @@
         <a ngbNavLink>Historia</a>
         <ng-template ngbNavContent>
             <ngx-charts-line-chart
+              [view]="view"
               [scheme]="colorScheme"
               [legend]="legend"
               [showXAxisLabel]="showXAxisLabel"
@@ -33,7 +34,7 @@
                     <input type="date" class="form-control mb-2" formControlName="ctrlDateTo" id="formFilterDateTo" placeholder="Date" [(ngModel)]="rangeDate.dateTo"> 
                   </div>
                   <div class="col-auto">
-                    <button mdbBtn type="button" class="button2" color="unique" style="border-radius: 50px; margin-left: 3%; width: 150px;" mdbWavesEffect >Filtruj</button>
+                    <button mdbBtn type="button" class="button2" color="unique" style="border-radius: 50px; margin-left: 3%; width: 150px;" mdbWavesEffect (click)="filter()">Filtruj</button>
 
                   </div>
                 </div>

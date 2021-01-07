@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { WavesModule, TableModule } from 'angular-bootstrap-md';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-my-bills',
@@ -16,9 +17,20 @@ import { WavesModule, TableModule } from 'angular-bootstrap-md';
 })
 export class MyBillsComponent implements OnInit, AfterViewInit {
 
-  readonly BaseURI='http://localhost:55284';
   li:any; 
   lis: Bill[] = []; 
+  displayedColumns: string[] = ['date', 'shop', 'city'];
+  dataSource = new MatTableDataSource<Bill>(this.lis);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    setTimeout(() => this.dataSource.paginator = this.paginator);
+  }
+
+  readonly BaseURI='http://localhost:55284';
+
 
   public data = [];
   public noData: any;
@@ -26,15 +38,15 @@ export class MyBillsComponent implements OnInit, AfterViewInit {
 
   constructor(private service: UserService,private http:HttpClient, private modalService: NgbModal,private router: Router) { }
   closeResult = '';
-  displayedColumns: string[] = ['date', 'shop', 'city'];
+  //displayedColumns: string[] = ['date', 'shop', 'city'];
 
-  dataSource = new MatTableDataSource(this.lis);
+  //dataSource = new MatTableDataSource(this.lis);
 
-  @ViewChild(MatSort) sort: MatSort;
+  /*@ViewChild(MatSort) sort: MatSort;
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
-  }
+  }*/
   
   ngOnInit(): void {
     this.http.get(this.BaseURI + '/functions/get-bills') 
@@ -45,6 +57,8 @@ export class MyBillsComponent implements OnInit, AfterViewInit {
       
       this.li=Response; 
       this.lis=this.li; 
+      
+      this.dataSource = new MatTableDataSource<Bill>(this.li);
       console.log(this.lis) 
 
     }); 
@@ -92,3 +106,4 @@ export class MyBillsComponent implements OnInit, AfterViewInit {
   // }
 
 }
+
