@@ -1,6 +1,21 @@
 .w3-sidebar{
     width:15%; 
-    margin-top: 4%;
-    height: 800px;
+    margin-top: 8%;
+    height: 500px;
     border-radius: 25px;
+    background-color: #DDDCCD;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.w3-bar-item{
+    font-family: 'Poiret One', cursive; 
+    font-weight: bolder;
+    font-size: 30px;
+    text-decoration: none;
+    color: rgb(99, 94, 94);
+    margin-top: 15%;
+}
+.fa{
+    margin-right: 4%;
+    font-size: 30px;
+
 }

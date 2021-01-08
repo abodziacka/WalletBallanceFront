@@ -3,8 +3,8 @@
         padding: 0;
         list-style: none;
         box-sizing: border-box;
-        
-
+        font-family: 'PT Serif', serif;
+        font-size: medium;
 }
 html{
   scroll-behavior: smooth;
@@ -38,7 +38,7 @@ html{
     opacity: 1;
 }
 
-/* .button{
+.button{
     top: 819px;
     left: 1142px;
     width: 202px;
@@ -49,7 +49,6 @@ html{
     filter: blur(undefined);
     transition-duration: 0.4s;
     cursor: pointer;
-
     font: normal normal normal 29px/32px Lucida Bright;
     letter-spacing: 0px;
     color: #FFFFFF;
@@ -60,7 +59,7 @@ html{
 .button:hover {
     background-color: #ccd2d4;
     color: rgb(34, 29, 29);
-    } */
+    }
     #h0{
       color: white;
     }
@@ -110,6 +109,7 @@ html{
       width: 100%;
       position: fixed;
       z-index: 1;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
     .footer{
       text-align: center;
@@ -197,7 +197,7 @@ html{
 
  
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; }
 
 .wrapper2 {
   display: inline-block;
@@ -205,6 +205,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-top: 5%;
   margin-left: 47%;
   transform: translate(-50%, -50%);
+  font-family: 'PT Serif', serif;
 }
 .button2{
   text-decoration: none;
@@ -218,6 +219,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   display: inline-block;
   font-family: Arial;
   overflow: hidden;
+  font-family: 'PT Serif', serif;
+  font-size:x-large;
+
 }
 .button2:before {
   content: "";

@@ -12,7 +12,7 @@
     </div> -->
         
         <div class="col">
-            <p id="h2">Wprowadź dane z paragonu</p>
+            <p id="h2" style="font-family: 'Amatic SC', cursive; font-size: 70px;">Zmień dane paragonu</p>
             <form [formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
                 <div class="one">
                     <div class="form-row align-items-center">
@@ -93,7 +93,10 @@
                       </tr>
                     </tbody>
                   </table>
-      <button type="submit" mdbBtn type="button" class="button2" color="elegant" style="border-radius: 20px; margin: 4px; width: 150px;" mdbWavesEffect [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']">Powrót</button>
+                  <div class="wrapper2">
+                    <button type="submit" mdbBtn class="button2"  color="elegant"  mdbWavesEffect style="width: 200px; margin:0 auto;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']">Powrót</button>
+              
+                        </div>   
 
                 </form>
 

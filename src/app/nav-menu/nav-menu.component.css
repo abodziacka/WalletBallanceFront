@@ -2,15 +2,20 @@
     text-decoration: none;
     text-align: center;
     color: #494446;
-    border: 2px solid #494446;
+    border: 1px solid #494446;
     border-radius: 10px;
     position: relative;
     width: 100px;
-    line-height: 20px;
+    line-height: 30px;
     display: inline-block;
     font-family: Arial;
     font-weight: 600;
     overflow: hidden;
+    font-family: 'Poiret One', cursive; 
+    font-weight: bolder;
+    font-size: 20px;
+    margin-right: 3%;
+
 }
 .button1:before {
     content: "";
@@ -33,4 +38,11 @@
 .button1:hover:before{
     transform: skewX(-45deg) translateX(350px);
     transition: all 0.4s ease-in;
+}
+.nav-item{
+     font-family: 'Poiret One', cursive; 
+     text-decoration: none;
+     font-size: 25px;
+     color: #000000;
+     font-weight: bolder;
 }

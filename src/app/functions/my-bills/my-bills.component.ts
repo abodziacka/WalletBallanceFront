@@ -9,6 +9,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { WavesModule, TableModule } from 'angular-bootstrap-md';
 import {MatPaginator} from '@angular/material/paginator';
+import { isThisTypeNode } from 'typescript';
 
 @Component({
   selector: 'app-my-bills',
@@ -19,7 +20,7 @@ export class MyBillsComponent implements OnInit, AfterViewInit {
 
   li:any; 
   lis: Bill[] = []; 
-  displayedColumns: string[] = ['date', 'shop', 'city'];
+  displayedColumns: string[] = ['date', 'shop', 'city', 'functions'];
   dataSource = new MatTableDataSource<Bill>(this.lis);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -27,6 +28,7 @@ export class MyBillsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     setTimeout(() => this.dataSource.paginator = this.paginator);
+    console.log(this.dataSource);
   }
 
   readonly BaseURI='http://localhost:55284';
@@ -64,6 +66,9 @@ export class MyBillsComponent implements OnInit, AfterViewInit {
     }); 
    
   }
+  // getID(){
+  //   return this.dataSource.data.values.
+  // }
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
