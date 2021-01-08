@@ -32,15 +32,15 @@
 <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
-    <h1 class="register">Login</h1>
+    <h1 class="register" style="font-size: 40px; margin-top: 3%;">Logowanie</h1>
     <!-- Login Form -->
     <form #form='ngForm' autocomplete="off" (submit)="onSubmit(form)">
-        <input type="text" #UserName="ngModel" id="login" class="fadeIn second" name="Email" [(ngModel)]="formModel.Email" placeholder="Email" required>
-        <input type="password" #Password="ngModel" id="password" class="fadeIn third" name="Password" [(ngModel)]="formModel.Password" placeholder="Password" required>
+        <input type="text" style="margin-top: 3%;" #UserName="ngModel" id="login" class="fadeIn second" name="Email" [(ngModel)]="formModel.Email" placeholder="Email" required>
+        <input type="password" #Password="ngModel" id="password" class="fadeIn third" name="Password" [(ngModel)]="formModel.Password" placeholder="Hasło" required>
         <!-- <input type="submit" class="fadeIn fourth" value="Log In"> -->
         <div class="form-row">
             <div class="form-group col-md-8 offset-md-2">
-            <button type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">Log in</button>
+            <button type="submit" class="btn btn-lg btn-block" style="margin-top: 2%;" [disabled]="form.invalid">Zaloguj</button>
                
             </div>
             <!-- <div class="form-row">
@@ -53,7 +53,7 @@
     <!-- Remind Passowrd -->
     <div id="formFooter">
         <div>
-            <a class="underlineHover" [routerLinkActive]="['link-active']" [routerLink]="['/user/registration']">Don't have an account?</a>
+            <a class="underlineHover" [routerLinkActive]="['link-active']" [routerLink]="['/user/registration']">Nie masz konta? Zarejestruj się.</a>
         </div>
 
     </div>

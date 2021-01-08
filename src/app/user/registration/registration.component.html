@@ -1,11 +1,11 @@
 <div class="wrapper fadeInDown">
     <div id="formContent">
-                <h1 class="register">REGISTRATION</h1>
+                <h1 class="register" style="font-size: 40px;">Rejestracja</h1>
     
     
         <form [formGroup]='service.formModel' autocomplete="off" (submit)="onSubmit()">
-            <div class="form-group ">
-                <input type="text" class="form-control" formControlName='UserName' pattern="^[A-Za-z0-9_-]{3,10}$" placeholder="Username *"> 
+            <div class="form-group " style="margin-top: 3%;">
+                <input type="text" class="form-control" formControlName='UserName' pattern="^[A-Za-z0-9_-]{3,10}$" placeholder="Nazwa użytkownika *"> 
                 <!-- <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">This field is mendatory.</label> -->
                 <!-- <p class="form__field__error">Alphanumeric string that may include _ and – having a length of 3 to 10 characters.</p> -->
             </div> 
@@ -15,12 +15,12 @@
             </div>
             <div formGroupName='Passwords'>
                 <div class="form-group">
-                    <input type="password" class="form-control" formControlName='Password' pattern="^[A-Za-z]\w{3,14}$" placeholder="Password *"> 
+                    <input type="password" class="form-control" formControlName='Password' pattern="^[A-Za-z]\w{3,14}$" placeholder="Hasło *"> 
                     <!-- <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.required">This field is mendatory.</label>  -->
                     <!-- <p class="form__field__error">You can use 4-15 characters which contain only characters, numeric digits, underscore and first character must be a letter.</p> -->
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" formControlName='ConfirmPassword' placeholder="Confirm Password *"> 
+                    <input type="password" class="form-control" formControlName='ConfirmPassword' placeholder="Potwierdź hasło *"> 
                    <!-- <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.required">This field is mendatory.</label>  -->
                    <!-- <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Confirm Password doesn't match.</label>  -->
     
@@ -30,7 +30,7 @@
             
             <div class="form-row">
                 <div class="form-group col-md-8 offset-md-2">
-                    <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid">Sign up</button>
+                    <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid">Zarejestruj</button>
                 </div>
                 
                 <!-- <div class="form-row">
@@ -40,7 +40,7 @@
             <div id="formFooter">
                     
                 <div>
-                    <a class="underlineHover" [routerLinkActive]="['link-active']" [routerLink]="['/user/login']">Have an account already?</a>
+                    <a class="underlineHover" [routerLinkActive]="['link-active']" [routerLink]="['/user/login']">Masz już konto? Zaloguj się.</a>
                 </div>
         
             </div>
