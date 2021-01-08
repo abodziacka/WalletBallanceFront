@@ -61,7 +61,11 @@ html{
     color: rgb(34, 29, 29);
     }
     #h0{
-      color: white;
+      color: rgb(231, 223, 223);
+      font-family: 'Courgette', cursive;
+    font-size: 60px;
+    text-shadow: 2px 2px 4px #000000;
+
     }
 
   #h1{
