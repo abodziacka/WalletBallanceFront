@@ -3,12 +3,12 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="margin-left: 3%;">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="margin-left: 2%;">
       <div class="navbar-nav">
         <!-- <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a> -->
         <a class="nav-item nav-link" (click)="onClickScroll('box')" href="#header" *ngIf="!hide()">Strona główna</a>
         <a class="nav-item nav-link"  (click)="onClickScroll('about')" href="#about" *ngIf="!hide()">O nas</a>
-        <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']" *ngIf="hide()">Moje konto</a>
+        <!-- <a class="nav-item nav-link"  [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']" *ngIf="hide()">Moje konto</a> -->
        
       </div>
     </div>

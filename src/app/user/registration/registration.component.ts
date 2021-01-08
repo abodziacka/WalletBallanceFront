@@ -20,7 +20,7 @@ export class RegistrationComponent implements OnInit {
         console.log(res);
        
           this.service.formModel.reset();
-          this.toastr.success('New user created!', 'Registration succesful');
+          this.toastr.success('Brawo!', 'Stworzono nowego użytkownika.');
 
         
       },
