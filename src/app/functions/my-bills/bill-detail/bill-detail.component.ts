@@ -4,23 +4,28 @@ import { Bill } from 'src/app/bill';
 import { Product } from 'src/app/product';
 import { UserService } from 'src/app/shared/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Category } from 'src/app/Category';
-import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import { ViewChild } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-bill-detail',
   templateUrl: './bill-detail.component.html',
   styleUrls: ['./bill-detail.component.css']
 })
-export class BillDetailComponent implements OnInit {
+export class BillDetailComponent implements OnInit, AfterViewInit {
+
+  
 
   readonly BaseURI='http://localhost:55284';
   li:any; 
   li2:any; 
   lis: Array<Category> = []; 
-
+ 
+  
   category=new Category("");
 
   firstFormGroup!: FormGroup;
@@ -38,6 +43,19 @@ export class BillDetailComponent implements OnInit {
   bill = new Bill('','',this.date,this.Products);
 
   jsonString!: string;
+
+  displayedColumns: string[] = ['name', 'categoryName', 'amount', 'price', 'totalPrice'];
+  dataSource = new MatTableDataSource<Product>(this.Products);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.paginator._intl.itemsPerPageLabel="Ilość na stronie";
+    setTimeout(() => this.dataSource.paginator = this.paginator);
+    console.log(this.dataSource);
+  }
+
 
 
   constructor(private _formBuilder: FormBuilder, private service: UserService, private router: Router, private http:HttpClient, private activatedRoute: ActivatedRoute) { }
@@ -104,9 +122,6 @@ export class BillDetailComponent implements OnInit {
 
     this.http.get(this.BaseURI + '/functions/get-category') 
     .subscribe(Response => { 
-  
-      // If response comes hideloader() function is called 
-      // to hide that loader  
       
       console.log(Response) 
       this.li=Response; 
@@ -115,9 +130,6 @@ export class BillDetailComponent implements OnInit {
       
       this.http.get(this.BaseURI + '/functions/get-bill?id='+id) 
         .subscribe(Response => { 
-  
-        // If response comes hideloader() function is called 
-        // to hide that loader  
         
         console.log(Response) 
         this.li2=Response; 
@@ -125,7 +137,9 @@ export class BillDetailComponent implements OnInit {
         var dateString = (this.bill.date + "").split('T')[0];
         this.bill.date = dateString;
         this.Products=this.li2.products; 
-        console.log(this.lis);
+        console.log(this.Products);
+      this.dataSource = new MatTableDataSource<Product>(this.Products);
+
       }); 
     }); 
 

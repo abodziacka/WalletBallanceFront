@@ -46,3 +46,14 @@ form{
     opacity: 1;
     margin-top: 3%;
   }
+
+  table {
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  .mat-header-cell{
+      text-align: center;
+  }

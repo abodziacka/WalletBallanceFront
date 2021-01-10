@@ -5,11 +5,8 @@ import { UserService } from 'src/app/shared/user.service';
 import { Bill } from 'src/app/bill';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import { WavesModule, TableModule } from 'angular-bootstrap-md';
 import {MatPaginator} from '@angular/material/paginator';
-import { isThisTypeNode } from 'typescript';
 
 @Component({
   selector: 'app-my-bills',
@@ -45,10 +42,6 @@ export class MyBillsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.http.get(this.BaseURI + '/functions/get-bills') 
     .subscribe(Response => { 
-  
-      // If response comes hideloader() function is called 
-      // to hide that loader  
-      
       this.li=Response; 
       this.lis=this.li; 
       
@@ -58,9 +51,6 @@ export class MyBillsComponent implements OnInit, AfterViewInit {
     }); 
    
   }
-  // getID(){
-  //   return this.dataSource.data.values.
-  // }
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -94,13 +84,6 @@ export class MyBillsComponent implements OnInit, AfterViewInit {
       return `with: ${reason}`;
     }
   }
-
-  // getAll(){
-  //   this.service.getBills().subscribe((results)=>{
-  //     this.data=results.bills;
-  //     console.log('JSON Response = ', JSON.stringify(results));
-  //   })
-  // }
 
 }
 

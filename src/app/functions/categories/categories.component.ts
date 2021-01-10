@@ -4,6 +4,10 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/shared/user.service';
 import { Router } from '@angular/router';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import { ViewChild } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
 
 
 
@@ -27,6 +31,18 @@ export class CategoriesComponent implements OnInit {
 
   categoryName: string ='';
   categoryDescription: string ='';
+
+  displayedColumns: string[] = ['name', 'description'];
+  dataSource = new MatTableDataSource<Category>(this.lis);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.paginator._intl.itemsPerPageLabel="Ilość na stronie";
+    setTimeout(() => this.dataSource.paginator = this.paginator);
+    console.log(this.dataSource);
+  }
 
   addNewCategory(){
 
@@ -59,6 +75,8 @@ export class CategoriesComponent implements OnInit {
       console.log(Response) 
       this.li=Response; 
       this.lis=this.li; 
+      this.dataSource = new MatTableDataSource<Category>(this.lis);
+
       console.log(this.lis);
     }); 
   }

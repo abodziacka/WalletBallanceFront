@@ -67,32 +67,46 @@
                     </div>
                 </div>
 
-                <table class="table table-striped" >
-                    <thead>
-                      <tr>
-                        <th scope="col"></th>
-                        <th scope="col">Produkt</th>
-                        <th scope="col">Kategoria</th>
-                        <th scope="col">Ilość</th>
-                        <th scope="col">Cena jednostkowa</th>
-                        <th scope="col">Cena</th>
-                        <th scope="col"></th>
-
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let model of Products; index as i;">
-                        <th scope="row"></th>
-                        <td>{{model.name}}</td>
-                        <td>{{getCategoryName(model.categoryId).name}}</td>
-                        <td>{{model.amount | number : '1.0-2'}}</td>
-                        <td>{{model.price | number : '1.0-2'}}</td>
-                        <td>{{model.amount! * model.price! | number : '1.0-2'}}</td>
-                        <td><button type="submit" mdbBtn type="button"  color="mdb-color" style="border-radius: 20px; margin: 4px;" mdbWavesEffect (click)="delete(i)">Usuń</button></td>
-
-                      </tr>
-                    </tbody>
-                  </table>
+                <div class="mat-elevation-z8" style="text-align: center;"> 
+                  <table mat-table [dataSource]="dataSource">
+                
+                    <ng-container matColumnDef="name">
+                      <th mat-header-cell *matHeaderCellDef> Produkt </th>
+                      <td mat-cell *matCellDef="let element"> {{element.name }} </td>
+                    </ng-container> 
+                
+                    <ng-container matColumnDef="categoryName">
+                      <th mat-header-cell *matHeaderCellDef> Kategoria </th>
+                      <td mat-cell *matCellDef="let element"> {{getCategoryName(element.categoryId).name}} </td>
+                    </ng-container> 
+                
+                     <ng-container matColumnDef="amount">
+                      <th mat-header-cell *matHeaderCellDef> Ilość </th>
+                      <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+                    </ng-container> 
+    
+                    <ng-container matColumnDef="price">
+                      <th mat-header-cell *matHeaderCellDef> Cena jednostkowa </th>
+                      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                    </ng-container> 
+                    
+                    <ng-container matColumnDef="totalPrice">
+                      <th mat-header-cell *matHeaderCellDef> Cena </th>
+                      <td mat-cell *matCellDef="let element"> {{element.amount! * element.price! | number : '1.0-2'}} </td>
+                    </ng-container> 
+                    
+                <ng-container matColumnDef="functions">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td mat-cell *matCellDef="let element"> <button type="submit" mdbBtn   color="blue-grey" style="border-radius: 20px;" mdbWavesEffect style="margin: 4px;" (click)="delete(element.id)">Usuń</button></td>
+                </ng-container> 
+                    
+                    <tr mat-header-row  *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> 
+                    
+                  </table> 
+                
+                  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                </div>
                   <div class="wrapper2">
                     <button type="submit" mdbBtn class="button2"  color="elegant"  mdbWavesEffect style="width: 200px; margin:0 auto;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills']">Powrót</button>
               

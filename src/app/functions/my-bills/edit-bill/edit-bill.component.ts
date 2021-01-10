@@ -7,15 +7,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Category } from 'src/app/Category';
-import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
-import { ThrowStmt } from '@angular/compiler';
 
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import { ViewChild } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
 @Component({
   selector: 'app-edit-bill',
   templateUrl: './edit-bill.component.html',
   styleUrls: ['./edit-bill.component.css']
 })
-export class EditBillComponent implements OnInit {
+export class EditBillComponent implements OnInit, AfterViewInit {
 
   readonly BaseURI='http://localhost:55284';
   li:any; 
@@ -40,7 +42,17 @@ export class EditBillComponent implements OnInit {
 
   jsonString!: string;
 
+  displayedColumns: string[] = ['name', 'categoryName', 'amount', 'price', 'totalPrice', 'functions'];
+  dataSource = new MatTableDataSource<Product>(this.Products);
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.paginator._intl.itemsPerPageLabel="Ilość na stronie";
+    setTimeout(() => this.dataSource.paginator = this.paginator);
+    console.log(this.dataSource);
+  }
   constructor(private _formBuilder: FormBuilder, private service: UserService, private router: Router, private http:HttpClient, private activatedRoute: ActivatedRoute) { }
 
   getCategoryName(id?: number): Category{
@@ -131,6 +143,8 @@ export class EditBillComponent implements OnInit {
         this.bill.date = dateString;
         this.Products=this.li2.products; 
         console.log(this.lis);
+      this.dataSource = new MatTableDataSource<Product>(this.Products);
+
       }); 
     }); 
 

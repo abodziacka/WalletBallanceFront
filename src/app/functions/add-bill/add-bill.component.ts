@@ -7,14 +7,17 @@ import { Router } from '@angular/router';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Category } from 'src/app/Category';
-import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import { ViewChild } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-add-bill',
   templateUrl: './add-bill.component.html',
   styleUrls: ['./add-bill.component.css']
 })
-export class AddBillComponent implements OnInit { 
+export class AddBillComponent implements OnInit, AfterViewInit { 
 
   readonly BaseURI='http://localhost:55284';
   li:any; 
@@ -38,6 +41,18 @@ export class AddBillComponent implements OnInit {
 
   jsonString!: string;
 
+  displayedColumns: string[] = ['name', 'categoryName', 'amount', 'price', 'totalPrice', 'functions'];
+  dataSource = new MatTableDataSource<Product>(this.Products);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.paginator._intl.itemsPerPageLabel="Ilość na stronie";
+    setTimeout(() => this.dataSource.paginator = this.paginator);
+    console.log(this.dataSource);
+  }
+
 
   constructor(private _formBuilder: FormBuilder, private service: UserService, private router: Router, private http:HttpClient) { }
 
@@ -58,6 +73,8 @@ export class AddBillComponent implements OnInit {
     this.add();
     this.index = this.index + 1;
     this.model = new Product('');
+    this.dataSource = new MatTableDataSource<Product>(this.Products);
+
     console.log(this.Products);
 }
 
@@ -71,6 +88,7 @@ delete(index:number){
     this.shop=this.bill.shop;
     this.date=this.bill.date;
     this.Products=this.bill.products;
+
     console.log(this.bill);
     
     this.service.addBill(this.bill).subscribe(
@@ -81,7 +99,6 @@ delete(index:number){
           console.log(err);
       }
     );;
-    //this.Products=[];
   }
 
   onSubmit() {
@@ -114,16 +131,5 @@ delete(index:number){
     }); 
   }
 
-  // submitBill(){
-
-  //   this.jsonString=JSON.stringify({userId: id, Name: this.title, Members: this.names, Relations: this.relations});
-
-  //   this.newTree.sendTree(this.jsonString).pipe(first()).subscribe(
-  //     data => {
-  //       console.log(data);
-  //     },
-  //     err => {
-  //     });
-  // }
 
 }

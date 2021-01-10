@@ -1,62 +1,6 @@
 <p id="h2" style="font-family: 'Amatic SC', cursive; font-size: 70px;">Moje paragony</p>
 
 <div class="content">
-    <!-- <table class="table table-striped" style="text-align: center;">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Data</th>
-            <th scope="col">Sklep</th>
-            <th scope="col">Miejscowość</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let e of lis; index as i;">
-            <th scope="row"></th>
-            <td>{{ e.date | slice:0:10}}</td>
-            <td>{{ e.shop }}</td>
-            <td>{{ e.city }}</td>
-            <td><button type="submit" mdbBtn  color="blue-grey" style="border-radius: 50px;" mdbWavesEffect style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills/bill-detail', e.id]" >Szczegóły</button>
-              <button type="submit" mdbBtn   color="blue-grey" style="border-radius: 20px;" mdbWavesEffect style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/my-bills/edit-bill', e.id]" >Edycja</button>
-              <button type="submit" mdbBtn   color="blue-grey" style="border-radius: 50px;" mdbWavesEffect style="margin: 4px;" (click)="open(content)">Usuń</button></td>
-
-
-              
-                    <ng-template #content let-modal>
-                      <div class="modal-header">
-                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form>
-                          <div class="row">    
-                            <div class="col-md-12">    
-                                <p class="text-center confirm-message">Jesteś pewny, że chcesz usunąć paragon?</p>    
-                            </div>    
-                        </div> 
-                          <div class="row">    
-                            <div class="col-md-12">    
-                                <p class="confirm-button">    
-                                    <a class="mr-2" >    
-                                        <button class="btn btn-yes" (click)="delete(e.id); modal.close()">Tak</button>    
-                                    </a>    
-                                    <a >    
-                                        <button class="btn btn-no" (click)="modal.close('Save click')">Nie</button>    
-                                    </a>    
-                                </p>    
-                            </div>    
-                        </div>    
-
-                        </form>
-                      </div>
-                    </ng-template>
-       
-          </tr>
-        </tbody>
-  </table>   -->
-  
 
   <div class="mat-elevation-z8" style="text-align: center;"> 
     <table mat-table [dataSource]="dataSource">
@@ -116,16 +60,12 @@
       <tr mat-header-row  *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> 
       
-  
-      <!-- <button type="submit" mdbBtn  color="blue-grey" style="border-radius: 50px;" mdbWavesEffect style="margin: 4px;"  >Szczegóły</button>
-      <button type="submit" mdbBtn   color="blue-grey" style="border-radius: 20px;" mdbWavesEffect style="margin: 4px;"  >Edycja</button>
-      <button type="submit" mdbBtn   color="blue-grey" style="border-radius: 50px;" mdbWavesEffect style="margin: 4px;" >Usuń</button> -->
     </table> 
   
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </div> 
-  <div class="wrapper2">
-    <button type="submit" mdbBtn type="button" class="button2" color="unique" style="border-radius: 20px; width: 250px; " mdbWavesEffect  [routerLinkActive]="['link-active']" [routerLink]="['/functions/add-bill']">Dodaj nowy paragon</button>  
+  <div class="wrapper2" >
+    <button type="submit" mdbBtn type="button" class="button2" color="unique" style="border-radius: 20px; width: 250px; margin-top: 5%;" mdbWavesEffect  [routerLinkActive]="['link-active']" [routerLink]="['/functions/add-bill']">Dodaj nowy paragon</button>  
 
   </div>
 </div>
