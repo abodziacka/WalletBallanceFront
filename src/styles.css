@@ -225,6 +225,7 @@ body { margin: 0; }
   overflow: hidden;
   font-family: 'PT Serif', serif;
   font-size:x-large;
+  cursor: pointer;
 
 }
 .button2:before {
@@ -247,5 +248,14 @@ body { margin: 0; }
 .button2:hover:before{
   transform: skewX(-45deg) translateX(350px);
   transition: all 0.4s ease-in;
+}
+
+.mat-header-cell{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.mat-cell{
+  font-size: 15px;
 }
 

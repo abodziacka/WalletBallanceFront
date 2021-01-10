@@ -27,6 +27,7 @@ export class MyBillsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.paginator._intl.itemsPerPageLabel="Ilość na stronie";
     setTimeout(() => this.dataSource.paginator = this.paginator);
     console.log(this.dataSource);
   }
@@ -40,15 +41,6 @@ export class MyBillsComponent implements OnInit, AfterViewInit {
 
   constructor(private service: UserService,private http:HttpClient, private modalService: NgbModal,private router: Router) { }
   closeResult = '';
-  //displayedColumns: string[] = ['date', 'shop', 'city'];
-
-  //dataSource = new MatTableDataSource(this.lis);
-
-  /*@ViewChild(MatSort) sort: MatSort;
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }*/
   
   ngOnInit(): void {
     this.http.get(this.BaseURI + '/functions/get-bills') 

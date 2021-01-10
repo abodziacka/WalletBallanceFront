@@ -16,11 +16,23 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class DiagramsComponent implements OnInit {
 
   constructor(private http:HttpClient, private _formBuilder: FormBuilder,  private service: UserService, private router: Router, private activatedRoute: ActivatedRoute) { }
-  active = 1;
+
   readonly BaseURI='http://localhost:55284';
 
   
-  
+   //WYKRES
+   view1: [number,number] = [700, 400];
+
+   // options
+   gradient: boolean = true;
+   showLegend: boolean = true;
+   showLabels1: boolean = true;
+   isDoughnut: boolean = false;
+   legendPosition: string = 'below';
+ 
+   colorScheme1 = {
+     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+   };
 
   firstFormGroup!: FormGroup;
   submitted = false;
@@ -36,15 +48,8 @@ export class DiagramsComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
   }
-  now(){
-    var nowDate =new Date().toDateString();
-    console.log(nowDate);
-  }
 
   filter(){
-    //this.call();
-    //this.router.navigate(['functions/diagrams/'+this.rangeDate.dateFrom+'/'+this.rangeDate.dateTo]);
-    //this.router.navigate(['functions/diagrams'], { queryParams: { dateFrom: this.rangeDate.dateFrom, dateTo: this.rangeDate.dateTo } })
     this.redirectTo('functions/diagrams/'+this.rangeDate.dateFrom+'/'+this.rangeDate.dateTo);
   }
   redirectTo(uri:string){
@@ -90,16 +95,12 @@ export class DiagramsComponent implements OnInit {
       });
     }
     this.call();
-    this.now();
   }
 
   call(){
     
     this.http.get(this.BaseURI + '/functions/get-budgetStatistics?dateFrom='+this.rangeDate.dateFrom+'&dateTo='+this.rangeDate.dateTo) 
     .subscribe(Response => { 
-  
-      // If response comes hideloader() function is called 
-      // to hide that loader  
       
       console.log(Response) 
       this.liStatistic=Response; 
