@@ -16,7 +16,7 @@ import { AfterViewInit } from '@angular/core';
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
-export class CategoriesComponent implements OnInit {
+export class CategoriesComponent implements OnInit, AfterViewInit {
 
   constructor(private http:HttpClient, private _formBuilder: FormBuilder,  private service: UserService, private router: Router) { }
 

@@ -76,11 +76,12 @@ html{
       margin: 0;
       }
   #h2{
-    margin-top: 100px;
+    margin-top: 90px;
     text-align: center;
-    font: normal normal normal 80px/98px Lucida Bright;
+    font-size: 70px;
+    font-family: 'Merienda', cursive;
     letter-spacing: 0px;
-    color: #3A2A2A;
+    color: #534040;
     text-shadow: 5px 3px 6px #a19692;
     opacity: 1;
   

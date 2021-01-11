@@ -38,7 +38,53 @@
                 </form>
             </div>
     
-            <table class="table table-striped" style="margin-top: 2%;">
+            <div class="mat-elevation-z8" style="text-align: center;"> 
+              <table mat-table [dataSource]="dataSource">
+            
+                <ng-container matColumnDef="fromDate">
+                  <th mat-header-cell *matHeaderCellDef> Od </th>
+                  <td mat-cell *matCellDef="let element"> {{element.fromDate | slice:0:10}} </td>
+                </ng-container> 
+            
+                <ng-container matColumnDef="toDate">
+                  <th mat-header-cell *matHeaderCellDef> Do </th>
+                  <td mat-cell *matCellDef="let element"> {{element.toDate | slice:0:10}} </td>
+                </ng-container> 
+
+                <ng-container matColumnDef="quantity">
+                  <th mat-header-cell *matHeaderCellDef> Budżet </th>
+                  <td mat-cell *matCellDef="let element"> {{element.quantity | number : '1.0-2'}} </td>
+                </ng-container> 
+
+                <ng-container matColumnDef="price">
+                  <th mat-header-cell *matHeaderCellDef> Wydana kwota </th>
+                  <td mat-cell *matCellDef="let element"> {{element.price | number : '1.0-2'}} </td>
+                </ng-container> 
+
+                <ng-container matColumnDef="saveMoney">
+                  <th mat-header-cell *matHeaderCellDef> Kwota pozostała </th>
+                  <td mat-cell *matCellDef="let element"> {{element.saveMoney | number : '1.0-2'}} </td>
+                </ng-container> 
+
+                <ng-container matColumnDef="progressBar">
+                  <th mat-header-cell *matHeaderCellDef></th>
+                  <td mat-cell *matCellDef="let element"><p ><ngb-progressbar type="success" style="width: 150px; margin: 0 auto;" [value]="((element.price!)*100)!/element.quantity!" [striped]="true" [animated]="true" ></ngb-progressbar></p>  </td>
+                </ng-container> 
+
+                <ng-container matColumnDef="functions">
+                  <th mat-header-cell *matHeaderCellDef> </th>
+                  <td mat-cell *matCellDef="let element"><button type="submit" mdbBtn   color="blue-grey" style="border-radius: 50px;" mdbWavesEffect style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams/detail', element.id]">Szczegóły</button> </td>
+                </ng-container> 
+                
+                <tr mat-header-row  *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> 
+                
+              </table> 
+            
+              <mat-paginator [pageSizeOptions]="[3, 5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>
+
+            <!-- <table class="table table-striped" style="margin-top: 2%;">
               <thead>
                 <tr>
                   <th scope="col">Od</th>
@@ -63,7 +109,7 @@
                   <td><button type="submit" mdbBtn   color="blue-grey" style="border-radius: 50px;" mdbWavesEffect style="margin: 4px;" [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams/detail', e.id]">Szczegóły</button></td>
                 </tr>
               </tbody>
-            </table>
+            </table> -->
     
     
   </div>

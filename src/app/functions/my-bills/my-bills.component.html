@@ -42,10 +42,10 @@
                   <div class="col-md-12">    
                       <p class="confirm-button">    
                           <a class="mr-2" >    
-                              <button class="btn btn-yes" (click)="delete(element.id); modal.close()">Tak</button>    
+                              <button class="btn btn-yes" type="submit" mdbBtn   color="pink" style="border-radius: 50px;" mdbWavesEffect (click)="delete(element.id); modal.close()">Tak</button>    
                           </a>    
                           <a >    
-                              <button class="btn btn-no" (click)="modal.close('Save click')">Nie</button>    
+                              <button class="btn btn-no"  type="submit" mdbBtn   color="deep-purple" style="border-radius: 50px;" mdbWavesEffect (click)="modal.close('Save click')">Nie</button>    
                           </a>    
                       </p>    
                   </div>    

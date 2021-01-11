@@ -7,6 +7,11 @@ import { DiagramDetails } from 'src/app/diagramDetails';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { Subject } from 'rxjs';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import { ViewChild } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
+
 
 
 
@@ -15,7 +20,7 @@ import { Subject } from 'rxjs';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css']
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent implements OnInit, AfterViewInit {
 
   constructor(private http:HttpClient, private _formBuilder: FormBuilder,  private service: UserService, private router: Router,private activatedRoute: ActivatedRoute) { }
   readonly BaseURI='http://localhost:55284';
@@ -24,6 +29,18 @@ export class DetailComponent implements OnInit {
   lisDiagDetails: Array<DiagramDetails> = []; 
   diagramDetail= new DiagramDetails();
   budgetId= "";
+  
+  displayedColumns: string[] = ['name', 'totalPrice', 'functions'];
+  dataSource = new MatTableDataSource<DiagramDetails>(this.lisDiagDetails);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.paginator._intl.itemsPerPageLabel="Ilość na stronie";
+    setTimeout(() => this.dataSource.paginator = this.paginator);
+    console.log(this.dataSource);
+  }
   
   //WYKRES
   view: [number, number] = [450, 400];
@@ -56,13 +73,13 @@ updateChart(){
       this.budgetId = id;
       this.service.getDiagramDetails(id) 
       .subscribe(Response => { 
-    
-        // If response comes hideloader() function is called 
-        // to hide that loader  
+     
         
         console.log(Response) 
         this.liDiagDetails=Response; 
         this.lisDiagDetails=this.liDiagDetails; 
+      this.dataSource = new MatTableDataSource<DiagramDetails>(this.lisDiagDetails);
+
         console.log(this.lisDiagDetails);
 
         let item = 0;

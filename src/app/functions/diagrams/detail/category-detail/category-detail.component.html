@@ -3,7 +3,34 @@
     <div class="col">
         <p id="h2" style="font-family: 'Amatic SC', cursive; font-size: 70px;"  >Dane kategorii</p>
 
-            <table class="table table-striped" style="width: 50%; margin: 0 auto; margin-top: 4%; text-align: center;">
+
+        <div class="mat-elevation-z8" style="text-align: center;"> 
+          <table mat-table [dataSource]="dataSource">
+        
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Produkt</th>
+              <td mat-cell *matCellDef="let element"> {{element.name }} </td>
+            </ng-container> 
+        
+            <ng-container matColumnDef="amount">
+              <th mat-header-cell *matHeaderCellDef>Ilość</th>
+              <td mat-cell *matCellDef="let element"> {{element.amount | number : '1.0-2'}} </td>
+            </ng-container> 
+            
+            <ng-container matColumnDef="totalPrice">
+              <th mat-header-cell *matHeaderCellDef>Cena za produkty</th>
+              <td mat-cell *matCellDef="let element"> {{element.totalPrice | number : '1.0-2'}} </td>
+            </ng-container> 
+    
+            <tr mat-header-row  *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> 
+            
+          </table> 
+        
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+
+            <!-- <table class="table table-striped" style="width: 50%; margin: 0 auto; margin-top: 4%; text-align: center;">
                 <thead>
                   <tr>
                     <th scope="col">Produkt</th>
@@ -22,7 +49,7 @@
                 </tbody>
                
 
-              </table>
+              </table> -->
               <div class="wrapper2" style="margin-top: 5%;">
                 <button type="submit" mdbBtn class="button2"  color="elegant" style="border-radius: 50px; width: 170px;" mdbWavesEffect  [routerLinkActive]="['link-active']" [routerLink]="['/functions/diagrams']">Powrót</button>
 

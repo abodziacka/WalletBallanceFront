@@ -4,8 +4,11 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/shared/user.service';
 import { Statistics } from 'src/app/statistics';
-import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import { ViewChild } from '@angular/core';
+import { AfterViewInit } from '@angular/core';
 
 
 @Component({
@@ -13,7 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './diagrams.component.html',
   styleUrls: ['./diagrams.component.css']
 })
-export class DiagramsComponent implements OnInit {
+export class DiagramsComponent implements OnInit, AfterViewInit {
 
   constructor(private http:HttpClient, private _formBuilder: FormBuilder,  private service: UserService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -44,6 +47,17 @@ export class DiagramsComponent implements OnInit {
   
   rangeDate: {dateFrom: string, dateTo: string} = { dateFrom: new Date().toISOString().substring(0,10), dateTo: new Date().toISOString().substring(0,10)};
 
+  displayedColumns: string[] = ['fromDate', 'toDate', 'quantity', 'price', 'saveMoney', 'progressBar', 'functions'];
+  dataSource = new MatTableDataSource<Statistics>(this.lisStatistic);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.paginator._intl.itemsPerPageLabel="Ilość na stronie";
+    setTimeout(() => this.dataSource.paginator = this.paginator);
+    console.log(this.dataSource);
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -105,6 +119,8 @@ export class DiagramsComponent implements OnInit {
       console.log(Response) 
       this.liStatistic=Response; 
       this.lisStatistic=this.liStatistic; 
+      this.dataSource = new MatTableDataSource<Statistics>(this.lisStatistic);
+
       console.log(this.lisStatistic);
 
       let item = this.liStatistic.length-1;

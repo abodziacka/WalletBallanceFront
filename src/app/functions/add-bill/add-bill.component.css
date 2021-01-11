@@ -13,12 +13,18 @@ input[type="text"]{
     box-sizing:border-box;
     padding: 0 auto;
 }
-option{
+select{
     width: 200px;
     -webkit-box-sizing:border-box;
     -moz-box-sizing:border-box;
     box-sizing:border-box;
     padding: 0 auto;
+    background-color: rgb(243, 239, 237);
+    color: black;
+    border-radius:10px; 
+    width: 100%;
+    float: center;
+    margin: 0 auto;
 }
 form{
     width: 80%;
