@@ -4,9 +4,14 @@
               <div class="col">
                 <p id="h2" style="font-family: 'Amatic SC', cursive; font-size: 80px;">Budżet</p>
                 <form [formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
+                   <!-- WALIDACJE -->
                   
                   <div  class="form-row align-items-center" style="margin-top: 5%;">
-                    
+                     <div *ngIf="firstFormGroup.get('firstCtrlQuantity').invalid && (firstFormGroup.get('firstCtrlQuantity').dirty || firstFormGroup.get('firstCtrlQuantity').touched)" class="alert alert-danger">
+                      <div *ngIf="firstFormGroup.get('firstCtrlQuantity').errors.required!">Budżet jest wymagany.</div>
+                      <div *ngIf="firstFormGroup.get('firstCtrlQuantity').errors.min!">Budżet nie może być ujemny.</div>
+                      <div *ngIf="firstFormGroup.get('firstCtrlQuantity').errors.pattern!">Budżet musi być liczbą.</div>
+                     </div> 
                     <div class="col-auto">
                     <input type="text" class="form-control mb-2"  id="inlineFormInput"  formControlName="firstCtrlQuantity" placeholder="Budżet Ogółem"  [(ngModel)]="budget.quantity">
                     </div>
@@ -21,7 +26,7 @@
                       </div>
                     </div>
                     
-                    <button mdbBtn type="button" class="button2" color="unique" style="border-radius: 50px; margin-left: 3%; width: 150px;" mdbWavesEffect (click)="addNewBudget()">Dodaj</button>
+                    <button mdbBtn type="button" class="button2" color="unique" style="border-radius: 50px; margin-left: 3%; width: 150px;" mdbWavesEffect [disabled]="!firstFormGroup.valid" (click)="addNewBudget()">Dodaj</button>
             
                   </div>
                   
@@ -88,25 +93,6 @@
                   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
                 </div>
 
-                    <!-- <table class="table table-striped" style="margin-top: 5%;">
-                        <thead>
-                          <tr>
-                            <th scope="col">Od</th>
-                            <th scope="col">Do</th>
-                            <th scope="col">Budżet</th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let e of lis">
-                            <td>{{e.fromDate | slice:0:10}}</td>
-                            <td>{{e.toDate | slice:0:10}}</td>
-                            <td>{{e.quantity }}</td>
-                            <td><button type="submit" mdbBtn   color="blue-grey" style="border-radius: 50px;" mdbWavesEffect style="margin: 4px;" (click)="delete(e.id)">Usuń</button></td>
-    
-                          </tr>
-                        </tbody>
-                      </table> -->
               </div>
             
             

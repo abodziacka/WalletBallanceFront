@@ -25,8 +25,8 @@ export class AddBillComponent implements OnInit, AfterViewInit {
 
   category=new Category("");
 
-  firstFormGroup!: FormGroup;
-  secondFormGroup!: FormGroup;
+  firstFormGroup: any;
+  secondFormGroup: any;
 
   Products: Array<Product> = [];
   Bills: Array<Bill> = [];
@@ -78,8 +78,22 @@ export class AddBillComponent implements OnInit, AfterViewInit {
     console.log(this.Products);
 }
 
-delete(index:number){
-  this.Products.splice(index,1);
+delete(id?:number){
+  if (id!=undefined){
+    this.service.deleteProduct(id).subscribe(
+      (res: any) => {
+        this.ngOnInit();
+        console.log(id);
+
+      },
+      err => {
+          console.log(err);
+      }
+    );
+    this.lis.splice(id,1);
+  }
+
+  
 }
 
   
@@ -107,15 +121,15 @@ delete(index:number){
 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrlShop: ['', Validators.required],
-      firstCtrlCity: ['', Validators.required],
+      firstCtrlShop: ['', [Validators.required, Validators.pattern("^([a-zA-Z]+\s*){1,3}$")]],
+      firstCtrlCity: ['', [Validators.required, Validators.pattern("^([a-zA-Z]+\s*){1,3}$")]],
       firstCtrlDate: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrlName: ['', Validators.required],
+      secondCtrlName: ['', [Validators.required, Validators.pattern("^([a-zA-Z]+\s*){1,5}$") ]],
       secondCtrlCategory: ['', Validators.required],
-      secondCtrlAmount: ['', Validators.required],
-      secondCtrlPrice: ['', Validators.required]
+      secondCtrlAmount: ['', [Validators.required, Validators.min(0)]],
+      secondCtrlPrice: ['', [Validators.required, Validators.min(0)]]
     });
 
     this.http.get(this.BaseURI + '/functions/get-category') 

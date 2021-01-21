@@ -5,27 +5,42 @@
     
         <form [formGroup]='service.formModel' autocomplete="off" (submit)="onSubmit()">
             <div class="form-group " style="margin-top: 3%;">
+                
                 <input type="text" class="form-control" formControlName='UserName' pattern="^[A-Za-z0-9_-]{3,10}$" placeholder="Nazwa użytkownika *"> 
-                <!-- <label class="text-danger" *ngIf="service.formModel.get('UserName').touched && service.formModel.get('UserName').errors?.required">This field is mendatory.</label> -->
-                <!-- <p class="form__field__error">Alphanumeric string that may include _ and – having a length of 3 to 10 characters.</p> -->
+                <!-- <div *ngIf="service.formModel.get('UserName').invalid && (service.formModel.get('UserName').dirty || service.formModel.get('UserName').touched)" class="alert alert-danger">
+                    <div *ngIf="service.formModel.get('UserName').errors.required!">Nazwa użytkownika jest wymagana.</div>
+                    <div *ngIf="service.formModel.get('UserName').errors.pattern!">Małe i duże litery, cyfry 0-9, _-, ilość znaków 3-10</div>
+
+                </div> -->
+            
             </div> 
             <div class="form-group">  
-                <input class="form-control" formControlName='Email'  placeholder="Email *"> 
-                <!-- <label class="text-danger" *ngIf="service.formModel.get('Email').touched && service.formModel.get('Email').errors?.email">Email is invalid.</label> -->
+                <input type="email" class="form-control" formControlName='Email'  placeholder="Email *"> 
+                <!-- <div *ngIf="service.formModel.get('Email').invalid && (service.formModel.get('Email').dirty || service.formModel.get('Email').touched)" class="alert alert-danger">
+                    <div *ngIf="service.formModel.get('Email').errors.required!">E-mail jest wymagany.</div>
+                    <div *ngIf="service.formModel.get('Email').errors.email!">Niepoprawny adres e-mail.</div>
+
+                </div>  -->
             </div>
             <div formGroupName='Passwords'>
                 <div class="form-group">
-                    <input type="password" class="form-control" formControlName='Password' pattern="^[A-Za-z]\w{3,14}$" placeholder="Hasło *"> 
-                    <!-- <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password').touched && service.formModel.get('Passwords.Password').errors?.required">This field is mendatory.</label>  -->
-                    <!-- <p class="form__field__error">You can use 4-15 characters which contain only characters, numeric digits, underscore and first character must be a letter.</p> -->
+                    <input type="password" class="form-control" formControlName='Password' pattern="^[A-Za-z0-9_-]{3,10}$" placeholder="Hasło *"> 
+                     <!-- <div *ngIf="service.formModel.get('Passwords.Password').invalid && (service.formModel.get('Passwords.Password').dirty || service.formModel.get('Passwords.Password').touched)" class="alert alert-danger">
+                    <div *ngIf="service.formModel.get('Passwords.Password').errors.required!">Hasło jest wymagane.</div>
+                    <div *ngIf="service.formModel.get('Passwords.Password').errors.pattern!">Małe i duże litery, cyfry 0-9, _-, ilość znaków 3-10</div> -->
+
+                <!-- </div>   -->
+                    <!-- <label class="text-danger" *ngIf="service.formModel.get('Passwords.Password')?.touched && service.formModel.get('Passwords.Password')?.errors?.required">This field is mendatory.</label>
+                    <p class="form__field__error">You can use 4-15 characters which contain only characters, numeric digits, underscore and first character must be a letter.</p> -->
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <input type="password" class="form-control" formControlName='ConfirmPassword' placeholder="Potwierdź hasło *"> 
-                   <!-- <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.required">This field is mendatory.</label>  -->
-                   <!-- <label class="text-danger" *ngIf="service.formModel.get('Passwords.ConfirmPassword').touched && service.formModel.get('Passwords.ConfirmPassword').errors?.passwordMismatch">Confirm Password doesn't match.</label>  -->
+                    <div *ngIf="service.formModel.get('Passwords.ConfirmPassword').invalid && (service.formModel.get('Passwords.ConfirmPassword').dirty || service.formModel.get('Passwords.ConfirmPassword').touched)" class="alert alert-danger"> </div>   
+                    <div *ngIf="service.formModel.get('Passwords.ConfirmPassword').errors.required!">Hasło jest wymagane.</div>
+                    <div *ngIf="service.formModel.get('Passwords.ConfirmPassword').errors.passwordMismatch">Hasła muszą być takie</div> 
+
     
-    
-                </div>
+                </div> -->
             </div>
             
             <div class="form-row">
@@ -33,9 +48,6 @@
                     <button type="submit" class="btn btn-lg btn-block" [disabled]="!service.formModel.valid">Zarejestruj</button>
                 </div>
                 
-                <!-- <div class="form-row">
-                    <button class="btn btn-danger my-2 my-sm-0" [routerLink]="['/user/login']"> {{'LOGIN.REMIND' | translate }}</button>
-                </div>  -->
             </div>
             <div id="formFooter">
                     

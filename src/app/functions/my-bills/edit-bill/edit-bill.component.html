@@ -1,20 +1,20 @@
 <div class="addbill">
-    <!-- <div class="photo">
-        <div class="col-4`">
-            <div class="input-group mb-3">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="inputGroupFile01">
-                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                </div>
-              </div>
-              
-        </div>
-    </div> -->
+   \
         
         <div class="col">
             <p id="h2" style="font-family: 'Amatic SC', cursive; font-size: 70px;">Zmień dane paragonu</p>
             <form [formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
                 <div class="one">
+                  <!-- WALIDACJE -->
+                  <div *ngIf="firstFormGroup.get('firstCtrlShop').invalid && (firstFormGroup.get('firstCtrlShop').dirty || firstFormGroup.get('firstCtrlShop').touched)" class="alert alert-danger">
+                    <div *ngIf="firstFormGroup.get('firstCtrlShop').errors.required!">Nazwa sklepu jest wymagana.</div>
+                    <div *ngIf="firstFormGroup.get('firstCtrlShop').errors.pattern!">Od 1 do 3 słów.</div>
+                   </div>
+
+                   <div *ngIf="firstFormGroup.get('firstCtrlCity').invalid && (firstFormGroup.get('firstCtrlCity').dirty || firstFormGroup.get('firstCtrlCity').touched)" class="alert alert-danger">
+                    <div *ngIf="firstFormGroup.get('firstCtrlCity').errors.required!">Nazwa miejscowości jest wymagana.</div>
+                    <div *ngIf="firstFormGroup.get('firstCtrlCity').errors.pattern!">Od 1 do 3 słów.</div>
+                   </div>
                     <div class="form-row align-items-center">
                         <div class="col-auto">
                           <input type="text" class="form-control mb-2" id="inlineFormInput1"  formControlName="firstCtrlShop" placeholder="Sklep"  [(ngModel)]="bill.shop">
@@ -25,7 +25,7 @@
                         <div class="col-auto">
                           <input type="date" class="form-control mb-2" id="inlineFormInput3"  formControlName="firstCtrlDate" placeholder="Date" [(ngModel)]="bill.date"> 
                         </div>
-                        <button type="submit" class="button2" mdbBtn  color="elegant" style="border-radius: 20px;" mdbWavesEffect style="margin: 4px;" (click)="save()">Zapisz zmiany</button>
+                        <button type="submit" class="button2" mdbBtn  color="elegant" style="border-radius: 20px;" mdbWavesEffect style="margin: 4px;" [disabled]="!firstFormGroup.valid" (click)="save()">Zapisz zmiany</button>
 
                     </div>
                 </div>
@@ -34,6 +34,19 @@
             <form [formGroup]="secondFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
 
                 <div class="two">
+                   <!-- WALIDACJE -->
+                   <div *ngIf="secondFormGroup.get('secondCtrlName').invalid && (secondFormGroup.get('secondCtrlName').dirty || secondFormGroup.get('secondCtrlName').touched)" class="alert alert-danger">
+                    <div *ngIf="secondFormGroup.get('secondCtrlName').errors.required!">Nazwa miejscowości jest wymagana.</div>
+                    <div *ngIf="secondFormGroup.get('secondCtrlName').errors.pattern!">Od 1 do 5 słów.</div>
+                   </div> 
+                     <div *ngIf="secondFormGroup.get('secondCtrlAmount').invalid && (secondFormGroup.get('secondCtrlAmount').dirty || secondFormGroup.get('secondCtrlAmount').touched)" class="alert alert-danger">
+                    <div *ngIf="secondFormGroup.get('secondCtrlAmount').errors.required!">Ilość jest wymagana.</div>
+                    <div *ngIf="secondFormGroup.get('secondCtrlAmount').errors.min">Ilość nie może być ujemna.</div>
+                   </div> 
+                   <div *ngIf="secondFormGroup.get('secondCtrlPrice').invalid && (secondFormGroup.get('secondCtrlPrice').dirty || secondFormGroup.get('secondCtrlPrice').touched)" class="alert alert-danger">
+                    <div *ngIf="secondFormGroup.get('secondCtrlPrice').errors.required!">Cena jest wymagana.</div>
+                    <div *ngIf="secondFormGroup.get('secondCtrlPrice').errors.min!">Cena nie może być ujemna.</div>
+                   </div>
                     <div class="form-row align-items-center">
                         <div class="col-auto">
                           <label class="sr-only" for="inlineFormInput">Name</label>
@@ -62,7 +75,7 @@
                           </div>
                        
                         <div class="col-auto">
-                          <button  mdbBtn type="button" class="button2" color="unique" style="border-radius: 20px;" mdbWavesEffect style="border-radius: 20px;"  (click)="newProduct()">Dodaj produkt</button>
+                          <button  mdbBtn type="button" class="button2" color="unique" style="border-radius: 20px;" mdbWavesEffect style="border-radius: 20px;" [disabled]="!secondFormGroup.valid" (click)="newProduct()">Dodaj produkt</button>
                         </div>
                     </div>
                 </div>

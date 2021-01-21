@@ -14,22 +14,23 @@ import { Budget } from '../budget';
 export class UserService {
 
   constructor(private fb:FormBuilder, private http:HttpClient) { }
-  readonly BaseURI='http://localhost:55284';
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  
 
   Bills: Array<Bill> = [];
 
   formModel = this.fb.group({
-    UserName :['', Validators.required],
-    Email :['', Validators.email],
+    UserName :['', [Validators.required, 
+                    Validators.pattern("^[A-Za-z0-9_-]{3,10}$")]],
+    Email :['', [Validators.required, Validators.email]],
     Passwords : this.fb.group({
-      Password :['', [Validators.required, Validators.minLength(4)]],
+      Password :['', [Validators.required, Validators.minLength(4), Validators.pattern("^[A-Za-z0-9_-]{3,10}$")]],
       ConfirmPassword :['',Validators.required]
     }, { validator: this.comparePasswords })
   });
+
+  // convenience getter for easy access to form fields
+  get f() { return this.formModel.controls; }
 
   comparePasswords(fb: FormGroup){
     let confirmPswrdCtrl = fb.get('ConfirmPassword');
@@ -46,6 +47,10 @@ export class UserService {
     }
   }
 
+  readonly BaseURI='http://localhost:55284';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   register(){
     var body = {
@@ -57,7 +62,6 @@ export class UserService {
     return this.http.post(this.BaseURI + '/user/registration', body);
   }
 
-
   login(formData: any) {
     return this.http.post(this.BaseURI + '/user/login', formData);
   }
@@ -68,18 +72,13 @@ export class UserService {
   }
 
   getBills(): Observable<any>{
-   // this.Bills.push(this.http.get(this.BaseURI + '/functions/get-bills'));
     return this.http.get(this.BaseURI + '/functions/get-bills');
   }
 
   addBill(bill: Bill) {
     return this.http.post(this.BaseURI + '/functions/add-bill', bill);
-     }
-     addCategory(category: Category) {
-      return this.http.post(this.BaseURI + '/functions/add-category', category);
-       }
+  }
 
-  
   getBill(id:number): Observable<any>{
     return this.http.get(this.BaseURI + '/functions/get-bill?id=${id}');
   }
@@ -92,6 +91,10 @@ export class UserService {
     return this.http.delete(this.BaseURI+'/functions/delete-bill-by-id?billId='+id, this.httpOptions);
   }
 
+  addCategory(category: Category) {
+    return this.http.post(this.BaseURI + '/functions/add-category', category);
+  }
+
   addBudget(budget: Budget) {
     return this.http.post(this.BaseURI + '/functions/add-budget', budget);
   }
@@ -102,6 +105,10 @@ export class UserService {
 
   deleteBudget(id: number): Observable<any>{
     return this.http.delete(this.BaseURI+'/functions/delete-budget-by-id?budgetId='+id, this.httpOptions);
+  }
+
+  deleteProduct(id: number): Observable<any>{
+    return this.http.delete(this.BaseURI+'/functions/delete-product-by-id?productId='+id, this.httpOptions);
   }
 
   getStatistics(): Observable<any>{

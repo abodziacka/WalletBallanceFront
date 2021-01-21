@@ -21,7 +21,6 @@ import { AddBillComponent } from './functions/add-bill/add-bill.component';
 import { MyBillsComponent } from './functions/my-bills/my-bills.component';
 import { DiagramsComponent } from './functions/diagrams/diagrams.component';
 import { BudgetComponent } from './functions/budget/budget.component';
-import { MyAccountComponent } from './functions/my-account/my-account.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { BillDetailComponent } from './functions/my-bills/bill-detail/bill-detail.component';
 import { EditBillComponent } from './functions/my-bills/edit-bill/edit-bill.component';
@@ -137,7 +136,6 @@ import {OverlayModule} from '@angular/cdk/overlay';
     MyBillsComponent,
     DiagramsComponent,
     BudgetComponent,
-    MyAccountComponent,
     BillDetailComponent,
     EditBillComponent,
     CategoriesComponent,

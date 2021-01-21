@@ -9,7 +9,6 @@ import { AddBillComponent } from './functions/add-bill/add-bill.component';
 import { MyBillsComponent } from './functions/my-bills/my-bills.component';
 import { DiagramsComponent } from './functions/diagrams/diagrams.component';
 import { BudgetComponent } from './functions/budget/budget.component';
-import { MyAccountComponent } from './functions/my-account/my-account.component';
 import { AuthGuard } from './auth/auth.guard';
 import { BillDetailComponent } from './functions/my-bills/bill-detail/bill-detail.component';
 import { EditBillComponent } from './functions/my-bills/edit-bill/edit-bill.component';
@@ -42,8 +41,7 @@ const routes: Routes = [
       { path: 'diagrams/:dateFrom/:dateTo', component: DiagramsComponent,canActivate: [AuthGuard] },
       { path: 'diagrams', component: DiagramsComponent,canActivate: [AuthGuard] },
       { path: 'categories', component: CategoriesComponent,canActivate: [AuthGuard] },
-      { path: 'budget', component: BudgetComponent,canActivate: [AuthGuard] },
-      { path: 'my-account', component: MyAccountComponent,canActivate: [AuthGuard]}]
+      { path: 'budget', component: BudgetComponent,canActivate: [AuthGuard] }]
 }
 
 

@@ -22,7 +22,7 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
 
   readonly BaseURI='http://localhost:55284';
 
-  firstFormGroup!: FormGroup;
+  firstFormGroup: any;
 
   li:any; 
   lis: Array<Category> = []; 
@@ -62,8 +62,8 @@ export class CategoriesComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
 
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrlName: ['', Validators.required],
-      firstCtrlDesc: ['', Validators.required]
+      firstCtrlName: ['', [Validators.required, Validators.pattern("^([a-zA-Z]+\s*){1,3}$")]],
+      firstCtrlDesc: ['', [Validators.required, Validators.pattern("^([a-zA-Z]+\s*){1,5}$")]]
     });
 
     this.http.get(this.BaseURI + '/functions/get-category') 

@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
 
   constructor(public service: UserService, public toastr:ToastrService, private router: Router) { }
-
+  submitted = false;
   ngOnInit(): void {
   }
 
@@ -21,6 +21,7 @@ export class RegistrationComponent implements OnInit {
       (res: any) => {
         console.log(res);
        
+        this.submitted=true;
           this.service.formModel.reset();
           this.toastr.success('Brawo!', 'Stworzono nowego użytkownika.');
           this.router.navigateByUrl('/user/login');
@@ -28,6 +29,8 @@ export class RegistrationComponent implements OnInit {
       },
       err => {
         console.log(err);
+        this.submitted=true;
+
       }
     );
   }

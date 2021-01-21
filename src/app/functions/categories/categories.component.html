@@ -6,18 +6,28 @@
             <form style="margin: 0 auto;"[formGroup]="firstFormGroup" #form="ngForm" (ngSubmit)="onSubmit()">
 
                 <div class="two" style="margin-left: 5%;">
+                   <div *ngIf="firstFormGroup.get('firstCtrlName').invalid && (firstFormGroup.get('firstCtrlName').dirty || firstFormGroup.get('firstCtrlName').touched)" class="alert alert-danger">
+                    <div *ngIf="firstFormGroup.get('firstCtrlName').errors.required!">Nazwa kategorii jest wymagana.</div>
+                    <div *ngIf="firstFormGroup.get('firstCtrlName').errors.pattern!">Od 1 do 3 słów.</div>
+                   </div> 
+                   <div *ngIf="firstFormGroup.get('firstCtrlDesc').invalid && (firstFormGroup.get('firstCtrlDesc').dirty || firstFormGroup.get('firstCtrlDesc').touched)" class="alert alert-danger">
+                    <div *ngIf="firstFormGroup.get('firstCtrlDesc').errors.required!">Opis kategorii jest wymagana.</div>
+                    <div *ngIf="firstFormGroup.get('firstCtrlDesc').errors.pattern!">Od 1 do 5 słów, tylko litery.</div>
+                   </div> 
                     <div class="d-flex justify-content-center" style="margin: 0 auto;">
                         
                           <div class="col-auto">
                             <input type="text" class="form-control mb-2"id="inlineFormInput1"  formControlName="firstCtrlName" placeholder="Kategoria"  [(ngModel)]="category.name">
                           </div>
+                                
                           <div class="col-auto">
                             <input type="text" class="form-control mb-2" id="inlineFormInput" formControlName="firstCtrlDesc" placeholder="Opis"  [(ngModel)]="category.description">
                           </div>
                        
                           <div class="col-auto">
-                            <button type="submit"mdbBtn type="button" class="button2" color="unique" style="border-radius: 50px; width: 150px;" mdbWavesEffect (click)="addNewCategory()">Dodaj</button>
-                          </div>
+                            <button type="submit" data-toggle="tooltip" data-placement="top" title="Disabled tooltip" mdbBtn type="button" style="pointer-events: none;" class="button2" color="unique" style="border-radius: 50px; width: 150px;" mdbWavesEffect [disabled]="!firstFormGroup.valid" (click)="addNewCategory()">Dodaj</button>
+                         
+                        </div>
                     </div>
                 </div>
 
@@ -30,7 +40,7 @@
                       <td mat-cell *matCellDef="let element"> {{element.name }} </td>
                     </ng-container> 
                 
-                    <ng-container matColumnDef="description">
+                    <ng-container matColumnDef="description"> 
                       <th mat-header-cell *matHeaderCellDef> Opis </th>
                       <td mat-cell *matCellDef="let element"> {{element.description}} </td>
                     </ng-container> 

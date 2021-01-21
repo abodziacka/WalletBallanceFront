@@ -10,7 +10,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import { ViewChild } from '@angular/core';
 import { AfterViewInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-
+import { Toast, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-budget',
@@ -19,11 +19,11 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 })
 export class BudgetComponent implements OnInit, AfterViewInit {
 
-  constructor(private http:HttpClient, private _formBuilder: FormBuilder,  private service: UserService, private router: Router,  private modalService: NgbModal) { }
+  constructor(private http:HttpClient, private _formBuilder: FormBuilder,  private service: UserService, private router: Router,  private modalService: NgbModal, public toastr:ToastrService) { }
 
   readonly BaseURI='http://localhost:55284';
   closeResult = '';
-  firstFormGroup!: FormGroup;
+  firstFormGroup: any;
 
   li:any; 
   lis: Array<Budget> = []; 
@@ -60,7 +60,7 @@ export class BudgetComponent implements OnInit, AfterViewInit {
             }
           );;
         } else {
-          
+          this.toastr.error( 'Podana data znajduje się już w okresach budżetowych.','Niepoprawny okres budżetowy.');
         }
       }); 
     }
@@ -105,7 +105,7 @@ export class BudgetComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
 
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrlQuantity: ['', Validators.required],
+      firstCtrlQuantity: ['', [Validators.required, Validators.min(0), Validators.pattern('[0-9]*.?[0-9]+$')]],
       firstCtrlFromDate: ['', Validators.required],
       firstCtrlToDate: ['', Validators.required]
 
