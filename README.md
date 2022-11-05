@@ -19,3 +19,4 @@ Do realizacji ww. funkcjonalności głównie użyte zostały trzy technologie pr
 * Microsoft SQL Server – zajmujące się projektowaniemzaprojektowaniem bazy przechowującej dane użytkownika.
 
 To repozytorium zawiera część frontendową ww. aplikacji.
+ 
