@@ -1,27 +1,21 @@
 # WalletBallance
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+Aplikacja została stworzona w celu obrony pracy inżynierskiej.
 
-## Development server
+Celem pracy inżynierskiej był projekt i implementacja aplikacji internetowej do kontroli wydatków. Aplikacja WalletBallance stworzona została, aby wspomóc użytkowników w zarządzaniu finansami osobistymi oraz planowaniu przyszłego budżetu. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Główną ideą aplikacji jest:
+* stworzenie profilu użytkownika,
+* dodanie danych z paragonów,
+* kategoryzowanie produktów,
+* tworzenie przejrzystych raportów,
+* wgląd użytkownika w zestawienia swoich wydatków na daną kategorię.
 
-## Code scaffolding
+Dodatkowymi funkcjami użytkowymi jest ustalenie budżetu, czyli maksymalnej kwoty do wydania w danym okresie, co pozwoli oszacować ewentualne oszczędności  oraz samodzielne dodawanie nowych kategorii do bazy, dzięki czemu użytkownik będzie mógł dopasować aplikację do swoich potrzeb.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Do realizacji ww. funkcjonalności głównie użyte zostały trzy technologie programistyczne, które dzięki rosnącej popularności i łatwej dostępności do bibliotek, znakomicie spełniają zadanie implementacji aplikacji internetowych:
+* ASP.NET Core  – odpowiedzialne za zbudowanie API, które tworzy integralną całość i obsługę aplikacji,
+* Angular 8 – służące do stworzenia szaty graficznej i interfejsu,
+* Microsoft SQL Server – zajmujące się projektowaniemzaprojektowaniem bazy przechowującej dane użytkownika.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To repozytorium zawiera część frontendową ww. aplikacji.
